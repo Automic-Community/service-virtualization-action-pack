@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<DOCU name="PCK.AUTOMIC_CA_SV.PUB.DOC">
+<HEADER state="1">
+<Title>Package documentation</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[About Automic's CA SV Package
+================================
+CA Service Virtualization Accelerate application delivery, continuously improve quality and reduce time-to-market. With this package we automate the given business goal:
+* Start Virtual Service
+* Stop Virtual Service
+* Delete Virtual Service
+* Deploy Virtual Service
+* Redeploy Virtual Service
+
+
+=Supported CA SV versions=
+CA SV Version 10.0
+
+=Limitations=
+(none)
+
+=Setup=
+* Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
+* The Agent should be able to access CA SV rest api endpoint URL in order to make HTTP requests.
+* Modify the HTTP timeout parameters as per your environment. By default "CONNECTION_TIMEOUT" is defined as 30000 and "READ_TIMEOUT" is defined as 60000. Both are defined in milliseconds. 0 means no timeout.
+
+=Variables=
+PCK.AUTOMIC_CA_SV.PRV.VARA.PACKAGE_PARAMETERS
+* Connection timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
+* Version of the API to be used in Blazemeter REST api. default value is latest.
+
+=Actions=
+Following actions are supported for CA SV.
+
+* Action Name: 
+* Action Description: 
+]]></DOC>
+</DOCU_Docu>
+</DOCU>
+</uc-export>
