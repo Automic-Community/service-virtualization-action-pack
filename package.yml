@@ -1,0 +1,14 @@
+# Package Build Configuration 
+name: PCK.AUTOMIC_CA_SV
+
+source: ae
+  
+# binary object resource mapping will be defined here
+binaries:
+  
+  - object: RESOURCES/LIBS/PCK.AUTOMIC_CA_SV.PRV.STORE
+    resources: 
+      - name: SVTOOLS.JAR
+        type: BINARY
+        path: tools/target/sv-tools.jar
+        version: 1.0.0
