@@ -38,7 +38,9 @@ public final class Client {
             ClientHelper.executeAction(params);
             responseCode = RESPONSE_OK;
         } catch (AutomicException | AutomicRuntimeException e) {
-            ConsoleWriter.writeln(CommonUtil.formatErrorMessage(e.getMessage()));
+            if (CommonUtil.checkNotEmpty(e.getMessage())) {
+                ConsoleWriter.writeln(CommonUtil.formatErrorMessage(e.getMessage()));
+            }
             ConsoleWriter.writeln(CommonUtil.formatErrorMessage(ERRORMSG));
         } catch (Exception e) {
             ConsoleWriter.writeln(e);
