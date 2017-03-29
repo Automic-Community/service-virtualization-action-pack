@@ -67,6 +67,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
 
     private void prepareCommonInputs() throws AutomicException {
         String temp = getOptionValue(Constants.BASE_URL);
+        this.username = getOptionValue(Constants.USERNAME);
         this.password = System.getenv(Constants.PASSWORD);
         this.skipCertValidation = CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION));
         try {

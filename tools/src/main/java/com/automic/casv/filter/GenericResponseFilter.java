@@ -1,6 +1,9 @@
 package com.automic.casv.filter;
 
+import java.util.List;
+
 import javax.json.JsonObject;
+import javax.ws.rs.core.MultivaluedMap;
 
 import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
@@ -35,20 +38,27 @@ public class GenericResponseFilter extends ClientFilter {
             msg = String.format(RESPONSE_CODE, response.getStatus());
         }
 
-        // printing json response on console
-        JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
+        // printing response code and message on console
+        ConsoleWriter.writeln(msg);
 
-        if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
-            ConsoleWriter.writeln(CommonUtil.formatErrorMessage(msg));
-
-            String responseMsg = response.getEntity(String.class);
+        MultivaluedMap<String, String> responseHeaders = response.getHeaders();
+        List<String> contentType = responseHeaders.get("Content-Type");
+        if (contentType != null && contentType.get(0).toLowerCase().contains("json")) {
+            // pretty print of json response on console
+            JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+            ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
+        } else if (contentType != null && contentType.get(0).toLowerCase().contains("xml")) {
+            ConsoleWriter.writeln(response.getEntity(String.class));
+        } else {
+            String responseMsg = "Authentication failed";
             throw new AutomicRuntimeException(responseMsg);
-
         }
 
-        ConsoleWriter.writeln(msg);
+        if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
+            String responseMsg = response.getEntity(String.class);
+            throw new AutomicRuntimeException(responseMsg);
+        }
+
         return response;
     }
-
 }

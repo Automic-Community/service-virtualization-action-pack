@@ -43,6 +43,11 @@ public class DeleteVSAction extends AbstractHttpAction {
 
     }
 
+    /**
+     * Prepare input parameter and their validation
+     * 
+     * @throws AutomicException
+     */
     private void prepareInputs() throws AutomicException {
         try {
             vseName = getOptionValue("vsename");
