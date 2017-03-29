@@ -31,14 +31,19 @@ CA SV Version 10.0
 =Variables=
 PCK.AUTOMIC_CA_SV.PRV.VARA.PACKAGE_PARAMETERS
 * Connection timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
-* Version of the API to be used in Blazemeter REST api. default value is latest.
+* Version of the API to be used in SV REST api. default value is api/Dcm.
 
 =Actions=
 Following actions are supported for CA SV.
 
-* Action Name: 
-* Action Description: 
-]]></DOC>
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE 
+* Action Description: This action starts Virtual Service.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE  
+* Action Description: This action stops the specified Virtual Service.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE  
+* Action Description: This action deletes the specified Virtual Service.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>
