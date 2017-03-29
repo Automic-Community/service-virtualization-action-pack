@@ -28,6 +28,10 @@ public class Constants {
     public static final String TRUE = "TRUE";
     public static final String ONE = "1";
 
+    // Accept type for the enpoints
+    public static final String START_STOP_VS_ACCEPT_TYPE = "application/vnd.ca.lisaInvoke.virtualService+json";
+                                                       
+
     private Constants() {
     }
 }
