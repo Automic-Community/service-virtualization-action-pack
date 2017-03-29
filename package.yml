@@ -1,14 +1,15 @@
 # Package Build Configuration 
 name: PCK.AUTOMIC_CA_SV
 
-source: ae
+source: ae/content
+appdata: ae/appdata
   
 # binary object resource mapping will be defined here
 binaries:
   
   - object: RESOURCES/LIBS/PCK.AUTOMIC_CA_SV.PRV.STORE
     resources: 
-      - name: SVTOOLS.JAR
+      - name: CASVTOOL
         type: BINARY
-        path: tools/target/sv-tools.jar
+        path: tools/target/casv-tool.jar
         version: 1.0.0
