@@ -43,8 +43,8 @@ public abstract class AbstractHttpAction extends AbstractAction {
     private Client client;
 
     public AbstractHttpAction() {
-        addOption(Constants.BASE_URL, true, "BlazeMeter URL");
-        addOption(Constants.USERNAME, true, "CASV URL");
+        addOption(Constants.BASE_URL, true, "CASV URL");
+        addOption(Constants.USERNAME, true, "Username");
         addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
     }
 

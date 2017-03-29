@@ -13,7 +13,7 @@ import com.automic.casv.util.ConsoleWriter;
  * */
 public class ClientHelper {
 
-    private static final String ABSOLUTEPATH = "com.automic.puppet.actions";
+    private static final String ABSOLUTEPATH = "com.automic.casv.actions";
 
     private ClientHelper() {
     }

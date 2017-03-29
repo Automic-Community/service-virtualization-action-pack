@@ -1,5 +1,7 @@
 package com.automic.casv.filter;
 
+import javax.json.JsonObject;
+
 import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
@@ -33,6 +35,10 @@ public class GenericResponseFilter extends ClientFilter {
             msg = String.format(RESPONSE_CODE, response.getStatus());
         }
 
+        // printing json response on console
+        JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
+
         if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
             ConsoleWriter.writeln(CommonUtil.formatErrorMessage(msg));
 
@@ -40,6 +46,7 @@ public class GenericResponseFilter extends ClientFilter {
             throw new AutomicRuntimeException(responseMsg);
 
         }
+
         ConsoleWriter.writeln(msg);
         return response;
     }
