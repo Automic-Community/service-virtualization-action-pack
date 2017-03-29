@@ -41,6 +41,7 @@ public class GenericResponseFilter extends ClientFilter {
         // printing response code and message on console
         ConsoleWriter.writeln(msg);
 
+        // print json or xml depending on its content-type
         MultivaluedMap<String, String> responseHeaders = response.getHeaders();
         List<String> contentType = responseHeaders.get("Content-Type");
         if (contentType != null && contentType.get(0).toLowerCase().contains("json")) {
@@ -49,7 +50,8 @@ public class GenericResponseFilter extends ClientFilter {
             ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
         } else if (contentType != null && contentType.get(0).toLowerCase().contains("xml")) {
             ConsoleWriter.writeln(response.getEntity(String.class));
-        } else {
+        } else if (response.getStatus() == 200) {
+            // check if authentication has failed
             String responseMsg = "Authentication failed";
             throw new AutomicRuntimeException(responseMsg);
         }
