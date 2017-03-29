@@ -23,7 +23,14 @@
 <sortDirection>0</sortDirection>
 </ATTR_VARA>
 <VARA state="1">
-<Variables/>
+<Variables>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+</Variables>
 </VARA>
 <DOCU_Docu state="1" type="text">
 <DOC/>
