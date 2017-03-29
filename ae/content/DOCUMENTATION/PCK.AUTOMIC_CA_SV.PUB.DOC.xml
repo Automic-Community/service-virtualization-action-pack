@@ -29,9 +29,8 @@ CA SV Version 10.0
 * Modify the HTTP timeout parameters as per your environment. By default "CONNECTION_TIMEOUT" is defined as 30000 and "READ_TIMEOUT" is defined as 60000. Both are defined in milliseconds. 0 means no timeout.
 
 =Variables=
-PCK.AUTOMIC_CA_SV.PRV.VARA.PACKAGE_PARAMETERS
+PCK.AUTOMIC_CA_SV.PUB.VARA.PACKAGE_PARAMETERS
 * Connection timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
-* Version of the API to be used in SV REST api. default value is api/Dcm.
 
 =Actions=
 Following actions are supported for CA SV.

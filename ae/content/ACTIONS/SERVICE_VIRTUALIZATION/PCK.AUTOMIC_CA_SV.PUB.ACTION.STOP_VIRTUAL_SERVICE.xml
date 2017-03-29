@@ -55,9 +55,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -65,8 +65,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 <UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -131,9 +130,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -141,8 +140,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 <UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -193,9 +191,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -203,8 +201,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 <UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -340,7 +337,7 @@ This action stops the specified Virtual Service. If Virtual Service is already s
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* VSE Name		: Provide name of the VS Environment in which VS is found. Eg. VSE
+* VSE Name		: Provide name of the VS Environment in which VS is present. Eg. VSE
 * Virtual Service Name 	: Provide name of the Virtual Service you want to stop. Eg. eBankingBackend
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
