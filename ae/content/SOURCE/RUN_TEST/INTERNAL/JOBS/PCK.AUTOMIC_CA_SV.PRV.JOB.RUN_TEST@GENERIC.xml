@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.RUN_TEST@GENERIC">
 <XHEADER state="1">
-<Title>Run test case</Title>
+<Title>Run Test</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -111,7 +111,7 @@
 : SET &ACTION_NAME# = "RunTestAction"
 
 ! Build java arguments
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD
+: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD_RUN_TEST
 
 ! Test case file
 : SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_TEST_FILE#
@@ -140,15 +140,10 @@
 :   SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -coordinator &UC4RB_SV_ESCAPED_STRING#")
 : ENDIF
 
-: PRINT &UC4RB_SV_CMD#
+! Run Asynchronously
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -async &UC4RB_SV_ASYNC#")
 
-! Access key is decrypted
-: INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
-: SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = "&UC4RB_SV_PASSWORD#"
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
-: IF &$PLATFORM# EQ "UNIX"
-    export UC4_DECRYPTED_PWD
-: ENDIF
+: PRINT &UC4RB_SV_CMD#
 
 ! Invoking java binary
   &UC4RB_SV_CMD#
@@ -169,7 +164,24 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI/>
+<OSCRI><![CDATA[: SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+
+: IF &STATUS# EQ 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","UC4RB_SV*","COL=DELIMITER", 'DELIMITER=*::=*')
+:    PROCESS &HND#
+:      SET &KEY# = GET_PROCESS_LINE(&HND#,1)
+:      SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
+:      IF &KEY# = "UC4RB_SV_TEST_RESULT"
+:          IF &VALUE# NE "true"
+:              MODIFY_STATE RETCODE=51
+:              MODIFY_STATE STATUS_TEXT="Error in running the test"
+:              TERM_PROCESS
+:          ENDIF
+:      ENDIF
+:    ENDPROCESS
+:    CLOSE_PROCESS &HND#
+: ENDIF
+]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>

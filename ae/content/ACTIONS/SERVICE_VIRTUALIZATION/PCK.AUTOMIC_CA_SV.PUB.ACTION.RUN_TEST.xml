@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST">
 <XHEADER state="1">
-<Title>Run test cases</Title>
+<Title>Run Test</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -52,19 +52,18 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_CONFIG_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_CONFIG_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_COORDINATORs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_COORDINATOR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_STAGING_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_STAGING_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
@@ -129,19 +128,18 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_CONFIG_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_CONFIG_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_COORDINATORs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_COORDINATOR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_STAGING_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_STAGING_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
@@ -192,19 +190,18 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_CONFIG_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_CONFIG_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_COORDINATORs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_COORDINATOR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
 <UC4RB_SV_STAGING_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_STAGING_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST"/>
@@ -284,9 +281,9 @@
 <Mode>1</Mode>
 </VALUE>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_TEST" parent="PRPTS" type="PROMPTSET">
