@@ -108,18 +108,18 @@
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "StopVirtualServiceAction"
+: SET &ACTION_NAME# = "StopVSAction"
 
 ! Build java arguments
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD
 ! VSE Name
 : SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_ENV#
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsen &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsename &UC4RB_SV_ESCAPED_STRING#")
 ! Virtual Service Name
 : SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_NAME#
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsn &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsname &UC4RB_SV_ESCAPED_STRING#")
 
 : PRINT &UC4RB_SV_CMD#
 
@@ -151,21 +151,17 @@
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
 <OSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:IF &STATUS# EQ 0
-:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","message*","COL=DELIMITER", 'DELIMITER=*::=*')
+:IF &STATUS# GT 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","*message*","COL=DELIMITER", 'DELIMITER=*:*')
 :    PROCESS &HND#
 :         SET &KEY# = GET_PROCESS_LINE(&HND#,1)
 :         SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:         IF &KEY# = "message"
-:           SET &SEARCHSTRING#="shutdown command sent"
+:           SET &SEARCHSTRING#="virtual service is not running"
 :           SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
-:           IF &POS# EQ 0
-:              MODIFY_STATE RETCODE=51
-:              MODIFY_STATE STATUS_TEXT="Error: Test is not yet started"
-:              P &VALUE#
-:            TERM_PROCESS
+:           IF &POS# NE 0
+:              MODIFY_STATE RETCODE=0
+:              TERM_PROCESS
 :           ENDIF
-:         ENDIF
 :  ENDPROCESS
 :  CLOSE_PROCESS &HND#
 :ENDIF]]></OSCRI>

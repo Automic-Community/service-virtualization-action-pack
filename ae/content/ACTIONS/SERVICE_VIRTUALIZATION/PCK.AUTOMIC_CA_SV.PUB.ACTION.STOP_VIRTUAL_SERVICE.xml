@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE">
 <XHEADER state="1">
-<Title>Delete Virtual Service</Title>
+<Title>Stop Virtual Service</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -55,20 +55,18 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_EXISTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_EXIST#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">YES</UC4RB_SV_VS_EXISTs.00>
-<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
+<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -99,7 +97,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="DELETE_VIRTUAL_SERVICE" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_SV.PRV.JOB.DELETE_VIRTUAL_SERVICE@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="STOP_VIRTUAL_SERVICE" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_SV.PRV.JOB.STOP_VIRTUAL_SERVICE@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -132,20 +130,18 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_EXISTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_EXIST#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">YES</UC4RB_SV_VS_EXISTs.00>
-<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
+<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -195,20 +191,18 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_BLZMTR_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_BLZMTR_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_BLZMTR_SSL_VALIDATIONs.00>
 <UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 <UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_EXISTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_EXIST#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE">YES</UC4RB_SV_VS_EXISTs.00>
-<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
+<UC4RB_SV_VS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_NAME#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -289,9 +283,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DELETE_VIRTUAL_SERVICE" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.STOP_VIRTUAL_SERVICE" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
@@ -330,31 +324,26 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE
+PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE
 
 = General description =
-This action deletes the specified Virtual Service.
-
-Note: 
-* If you specify "Fail if VS does not exist" to Yes, Action will fail if specified service does not exist.
-* If you specify "Fail if VS does not exist" to No, Action will end successfully if specified service does not exist.
+This action stops the specified Virtual Service. If Virtual Service is already stopped then action ends successfully.
 
 = Failure Conditions =
 * Provided invalid VSE Name/Virtual Service Name. 
 
 = Inputs =
-* API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
-* Username			: Specify username for authentication.
-* Password			: Specify password for authentication.
-* Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
-* VSE Name			: Provide name of the VS Environment in which VS is found. Eg. VSE
-* Virtual Service Name 		: Provide name of the Virtual Service you want to delete. Eg. eBankingBackend
-* Fail if VS is not exist	: Action fails if VS cannot be found, if 'YES' is selected.
-* Sudo Password         	: The password for the sudo command.
-* Options              	 	: Run using sudo password (and sudo username if specified).
-* Sudo Username         	: The username to be used for the sudo command. 	
-* Overwrite Agent		: Overwrites the default agent
-* Overwrite Login		: Overwrites the default login
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
+* Username		: Specify username for authentication.
+* Password		: Specify password for authentication.
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* VSE Name		: Provide name of the VS Environment in which VS is present. Eg. VSE
+* Virtual Service Name 	: Provide name of the Virtual Service you want to stop. Eg. eBankingBackend
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
 
 = Behavior =
 (none)
