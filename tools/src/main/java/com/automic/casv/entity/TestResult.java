@@ -55,7 +55,7 @@ public class TestResult {
      * @return
      */
     public boolean isTestPassed() {
-        if (!("OK".equals(this.status) && "OK".equals(this.resultStatus))) {
+        if (!"OK".equals(this.status) || (!"".equals(this.resultStatus) && !"ENDED".equals(this.resultStatus))) {
             return false;
         }
 

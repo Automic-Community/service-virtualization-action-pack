@@ -56,9 +56,6 @@ public class GenericResponseFilter extends ClientFilter {
                 String responseMsg = response.getEntity(String.class);
                 throw new AutomicRuntimeException(responseMsg);
             }
-        } else {
-            String responseMsg = "Failed to process the request";
-            throw new AutomicRuntimeException(responseMsg);
         }
 
         return response;

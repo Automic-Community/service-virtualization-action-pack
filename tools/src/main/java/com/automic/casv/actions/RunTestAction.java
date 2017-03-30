@@ -100,7 +100,9 @@ public class RunTestAction extends AbstractHttpAction {
 
     // get test result and print in the job report whether test passed or not
     private void prepareOutput(ClientResponse response) {
-        TestResult testResult = TestResult.getInstance(response.getEntity(String.class));
+        String xmlResponse = response.getEntity(String.class);
+        ConsoleWriter.writeln(xmlResponse);
+        TestResult testResult = TestResult.getInstance(xmlResponse);
 
         ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
 
