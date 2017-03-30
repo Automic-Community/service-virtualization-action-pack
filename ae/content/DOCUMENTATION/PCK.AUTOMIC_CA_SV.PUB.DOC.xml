@@ -42,7 +42,13 @@ Following actions are supported for CA SV.
 * Action Description: This action stops the specified Virtual Service.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE  
-* Action Description: This action deletes the specified Virtual Service.]]></DOC>
+* Action Description: This action deletes the specified Virtual Service.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE  
+* Action Description: This action deploy's the Virtual Service over VS Environment using MAR File Path or URI. 
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE  
+* Action Description: This action redeploy's the Virtual Service over VS Environment using MAR File Path or URI.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>

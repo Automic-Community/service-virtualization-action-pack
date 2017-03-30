@@ -44,20 +44,20 @@ public class GenericResponseFilter extends ClientFilter {
         // print json or xml depending on its content-type
         MultivaluedMap<String, String> responseHeaders = response.getHeaders();
         List<String> contentType = responseHeaders.get("Content-Type");
+        if (contentType != null) {
+            if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
+                if (contentType.get(0).toLowerCase().contains("json")) {
+                    JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+                    ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
+                } else if (contentType.get(0).toLowerCase().contains("xml")) {
+                    ConsoleWriter.writeln(response.getEntity(String.class));
+                }
 
-        if (contentType != null && contentType.get(0).toLowerCase().contains("json")) {
-            JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-            ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
-        } else if (contentType != null && contentType.get(0).toLowerCase().contains("xml")) {
-            ConsoleWriter.writeln(response.getEntity(String.class));
-        } else if (contentType == null && response.getStatus() == 200) {
-            // check if authentication has failed
+                String responseMsg = response.getEntity(String.class);
+                throw new AutomicRuntimeException(responseMsg);
+            }
+        } else {
             String responseMsg = "Failed to process the request";
-            throw new AutomicRuntimeException(responseMsg);
-        }
-
-        if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
-            String responseMsg = response.getEntity(String.class);
             throw new AutomicRuntimeException(responseMsg);
         }
 

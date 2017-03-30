@@ -6,11 +6,11 @@ import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 
 /**
- * Main Class is the insertion point of Puppet interaction api when called from AE implementation. It delegates the
+ * Main Class is the insertion point of CA SV interaction api when called from AE implementation. It delegates the
  * parameters to appropriate action and returns a response code based on output of action.
  *
- * Following response code are returned by java program 0 - Successful response from Puppet API, 1 - An exception
- * occurred/Error in response from Puppet API, 2 - Connection timeout while calling Puppet API
+ * Following response code are returned by java program 0 - Successful response from CA SV API, 1 - An exception
+ * occurred/Error in response from CA SV API, 2 - Connection timeout while calling CA SV API
  *
  */
 
