@@ -44,7 +44,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
 
     public AbstractHttpAction() {
         addOption(Constants.BASE_URL, true, "CASV URL");
-        addOption(Constants.USERNAME, true, "Username");
+        addOption(Constants.USERNAME, false, "Username");
         addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
     }
 
@@ -95,7 +95,9 @@ public abstract class AbstractHttpAction extends AbstractAction {
     protected WebResource getClient() throws AutomicException {
         if (client == null) {
             client = HttpClientConfig.getClient(baseUrl.getScheme(), this.skipCertValidation);
-            client.addFilter(new HTTPBasicAuthFilter(username, password));
+            if (CommonUtil.checkNotEmpty(username)) {
+                client.addFilter(new HTTPBasicAuthFilter(username, password));
+            }
             client.addFilter(new GenericResponseFilter());
         }
         return client.resource(baseUrl);
