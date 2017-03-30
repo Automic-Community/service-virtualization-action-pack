@@ -65,7 +65,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
@@ -142,7 +141,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
@@ -205,7 +203,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
