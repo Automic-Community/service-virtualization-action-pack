@@ -63,22 +63,16 @@ public class DeployVSAction extends AbstractHttpAction {
      * @throws AutomicException
      */
     private void prepareInputs() throws AutomicException {
-        try {
-            vseName = getOptionValue("vsename");
-            CaSvValidator.checkNotEmpty(vseName, "VSE Name");
+        vseName = getOptionValue("vsename");
+        CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-            String temp = getOptionValue("marfile");
-            if (CommonUtil.checkNotEmpty(temp)) {
-                marFile = new File(temp);
-                CaSvValidator.checkFileExists(marFile, "Artifact File Path");
-            }
-
-            marURI = getOptionValue("maruri");
-        } catch (AutomicException e) {
-            ConsoleWriter.writeln(e.getMessage());
-            throw e;
+        String temp = getOptionValue("marfile");
+        if (CommonUtil.checkNotEmpty(temp)) {
+            marFile = new File(temp);
+            CaSvValidator.checkFileExists(marFile, "Artifact File Path");
         }
 
+        marURI = getOptionValue("maruri");
     }
 
 }

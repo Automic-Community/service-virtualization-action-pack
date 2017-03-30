@@ -1,9 +1,0 @@
-#environment config
-automationEngine: 
-  host: 127.0.0.1
-  port: 2217
-  client: 2
-  user: user
-  department: DEV
-  password: test
-  packagesPath: PACKAGES

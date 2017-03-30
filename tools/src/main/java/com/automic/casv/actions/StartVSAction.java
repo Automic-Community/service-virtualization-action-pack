@@ -48,17 +48,11 @@ public class StartVSAction extends AbstractHttpAction {
      * @throws AutomicException
      */
     private void prepareInputs() throws AutomicException {
-        try {
-            vseName = getOptionValue("vsename");
-            CaSvValidator.checkNotEmpty(vseName, "VSE Name");
+        vseName = getOptionValue("vsename");
+        CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-            vsName = getOptionValue("vsname");
-            CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
-        } catch (AutomicException e) {
-            ConsoleWriter.writeln(e.getMessage());
-            throw e;
-        }
-
+        vsName = getOptionValue("vsname");
+        CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
     }
 
 }
