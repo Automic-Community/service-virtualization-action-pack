@@ -34,13 +34,9 @@ public class DeleteVSAction extends AbstractHttpAction {
     @Override
     protected void executeSpecific() throws AutomicException {
         prepareInputs();
-
         WebResource webResource = getClient().path("VSEs").path(vseName).path(vsName);
-
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
-
         webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
-
     }
 
     /**
