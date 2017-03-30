@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.DELETE_VIRTUAL_SERVICE@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.RUN_TEST@GENERIC">
 <XHEADER state="1">
-<Title>Delete Virtual Service</Title>
+<Title>Run test case</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -104,37 +104,58 @@
 : ENDIF
 
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
-! Log parameters specific to action
-: SET &UC4RB_LOGGING_PARAMETER# = "Fail if VS does not exist"
-: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_SV_VS_EXIST#"
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
-
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "DeleteVSAction"
+: SET &ACTION_NAME# = "RunTestAction"
 
 ! Build java arguments
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD
-! VSE Name
-: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_ENV#
+
+! Test case file
+: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_TEST_FILE#
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsename &UC4RB_SV_ESCAPED_STRING#")
-! Virtual Service Name
-: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_NAME#
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsname &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -testcasefile &UC4RB_SV_ESCAPED_STRING#")
+
+! Staging doc
+: IF &UC4RB_SV_STAGING_FILE# <> ""
+:   SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_STAGING_FILE#
+:   INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -stagingdoc &UC4RB_SV_ESCAPED_STRING#")
+: ENDIF
+
+
+! Configuration file
+: IF &UC4RB_SV_CONFIG_FILE# <> ""
+:   SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_CONFIG_FILE#
+:   INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -config &UC4RB_SV_ESCAPED_STRING#")
+: ENDIF
+
+! Coordinator
+: IF &UC4RB_SV_COORDINATOR# <> ""
+:   SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_COORDINATOR#
+:   INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -coordinator &UC4RB_SV_ESCAPED_STRING#")
+: ENDIF
 
 : PRINT &UC4RB_SV_CMD#
+
+! Access key is decrypted
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
+: SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = "&UC4RB_SV_PASSWORD#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
+: IF &$PLATFORM# EQ "UNIX"
+    export UC4_DECRYPTED_PWD
+: ENDIF
 
 ! Invoking java binary
   &UC4RB_SV_CMD#
 
 ! Status messages
-: SET &UC4RB_LOGGING_INFO# = "******** DELETE VIRTUAL SERVICE ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** DELETE VIRTUAL SERVICE ACTION FAILED ********"
+: SET &UC4RB_LOGGING_INFO# = "******** RUN TEST ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** RUN TEST ACTION FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 
@@ -148,23 +169,7 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[:IF &UC4RB_SV_VS_EXIST# EQ "NO"
-:  SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:  IF &STATUS# GT 0
-:      SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","*message*","COL=DELIMITER", 'DELIMITER=*:*')
-:      PROCESS &HND#
-:           SET &KEY# = GET_PROCESS_LINE(&HND#,1)
-:           SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:           SET &SEARCHSTRING#="Virtual service name is invalid"
-:           SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
-:             IF &POS# NE 0
-:                MODIFY_STATE RETCODE=0
-:                TERM_PROCESS
-:             ENDIF
-:    ENDPROCESS
-:    CLOSE_PROCESS &HND#
-:  ENDIF
-:ENDIF]]></OSCRI>
+<OSCRI/>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>

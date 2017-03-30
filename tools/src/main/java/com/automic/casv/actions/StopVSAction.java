@@ -1,7 +1,10 @@
 package com.automic.casv.actions;
 
+import javax.json.JsonObject;
+
 import com.automic.casv.constants.Constants;
 import com.automic.casv.exception.AutomicException;
+import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 import com.automic.casv.validator.CaSvValidator;
 import com.sun.jersey.api.client.ClientResponse;
@@ -38,7 +41,11 @@ public class StopVSAction extends AbstractHttpAction {
 
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
 
-        webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).post(ClientResponse.class);
+        ClientResponse response = webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).post(ClientResponse.class);
+
+        // print response on console
+        JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
 
     }
 
@@ -48,17 +55,11 @@ public class StopVSAction extends AbstractHttpAction {
      * @throws AutomicException
      */
     private void prepareInputs() throws AutomicException {
-        try {
-            vseName = getOptionValue("vsename");
-            CaSvValidator.checkNotEmpty(vseName, "VSE Name");
+        vseName = getOptionValue("vsename");
+        CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-            vsName = getOptionValue("vsname");
-            CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
-        } catch (AutomicException e) {
-            ConsoleWriter.writeln(e.getMessage());
-            throw e;
-        }
-
+        vsName = getOptionValue("vsname");
+        CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
     }
 
 }

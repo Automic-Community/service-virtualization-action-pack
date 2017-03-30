@@ -2,6 +2,7 @@ package com.automic.casv.actions;
 
 import java.io.File;
 
+import javax.json.JsonObject;
 import javax.ws.rs.core.MediaType;
 
 import com.automic.casv.constants.Constants;
@@ -50,11 +51,20 @@ public class DeployVSAction extends AbstractHttpAction {
         WebResource webResource = getClient().path("VSEs").path(vseName).path("actions").path("deployMar");
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
 
-        FileDataBodyPart fp = new FileDataBodyPart("file", marFile, MediaType.APPLICATION_OCTET_STREAM_TYPE);
         FormDataMultiPart part = new FormDataMultiPart();
-        part.bodyPart(fp);
-        webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).type(part.getMediaType())
+        if (marFile != null) {
+            FileDataBodyPart fp = new FileDataBodyPart("file", marFile, MediaType.APPLICATION_OCTET_STREAM_TYPE);
+            part.bodyPart(fp);
+        } else {
+            part.field("fileURI", marURI);
+        }
+
+        ClientResponse response = webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).type(part.getMediaType())
                 .post(ClientResponse.class, part);
+
+        // print response on console
+        JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
     }
 
     /**
@@ -63,22 +73,16 @@ public class DeployVSAction extends AbstractHttpAction {
      * @throws AutomicException
      */
     private void prepareInputs() throws AutomicException {
-        try {
-            vseName = getOptionValue("vsename");
-            CaSvValidator.checkNotEmpty(vseName, "VSE Name");
+        vseName = getOptionValue("vsename");
+        CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-            String temp = getOptionValue("marfile");
-            if (CommonUtil.checkNotEmpty(temp)) {
-                marFile = new File(temp);
-                CaSvValidator.checkFileExists(marFile, "Artifact File Path");
-            }
-
-            marURI = getOptionValue("maruri");
-        } catch (AutomicException e) {
-            ConsoleWriter.writeln(e.getMessage());
-            throw e;
+        String temp = getOptionValue("marfile");
+        if (CommonUtil.checkNotEmpty(temp)) {
+            marFile = new File(temp);
+            CaSvValidator.checkFileExists(marFile, "Artifact File Path");
         }
 
+        marURI = getOptionValue("maruri");
     }
 
 }

@@ -34,13 +34,9 @@ public class DeleteVSAction extends AbstractHttpAction {
     @Override
     protected void executeSpecific() throws AutomicException {
         prepareInputs();
-
         WebResource webResource = getClient().path("VSEs").path(vseName).path(vsName);
-
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
-
         webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
-
     }
 
     /**
@@ -49,16 +45,11 @@ public class DeleteVSAction extends AbstractHttpAction {
      * @throws AutomicException
      */
     private void prepareInputs() throws AutomicException {
-        try {
-            vseName = getOptionValue("vsename");
-            CaSvValidator.checkNotEmpty(vseName, "VSE Name");
+        vseName = getOptionValue("vsename");
+        CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-            vsName = getOptionValue("vsname");
-            CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
-        } catch (AutomicException e) {
-            ConsoleWriter.writeln(e.getMessage());
-            throw e;
-        }
+        vsName = getOptionValue("vsname");
+        CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
 
     }
 
