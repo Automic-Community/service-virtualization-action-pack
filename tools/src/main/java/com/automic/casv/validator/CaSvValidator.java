@@ -1,5 +1,7 @@
 package com.automic.casv.validator;
 
+import java.io.File;
+
 import com.automic.casv.constants.ExceptionConstants;
 import com.automic.casv.exception.AutomicException;
 import com.automic.casv.util.CommonUtil;
@@ -32,6 +34,12 @@ public final class CaSvValidator {
         if (value < lessThan) {
             String errMsg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameterName, value);
             throw new AutomicException(errMsg);
+        }
+    }
+
+    public static void checkFileExists(File file, String parameterName) throws AutomicException {
+        if (!(file.exists() && file.isFile())) {
+            throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameterName, file));
         }
     }
 
