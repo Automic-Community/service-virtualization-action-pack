@@ -97,7 +97,7 @@
     </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE"></UC4RB_SV_VS_ENVs.00><UC4RB_SV_MAR_PATHs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_PATH#" ReadFromTable="OPSE"></UC4RB_SV_MAR_PATHs.00><UC4RB_SV_MAR_URIs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_URI#" ReadFromTable="OPSE"></UC4RB_SV_MAR_URIs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE">VSE</UC4RB_SV_VS_ENVs.00><UC4RB_SV_MAR_PATHs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_PATH#" ReadFromTable="OPSE"></UC4RB_SV_MAR_PATHs.00><UC4RB_SV_MAR_URIs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_URI#" ReadFromTable="OPSE"></UC4RB_SV_MAR_URIs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

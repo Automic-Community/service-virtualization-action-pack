@@ -128,7 +128,7 @@
 
 ! Status messages
 : SET &UC4RB_LOGGING_INFO# = "******** START VIRTUAL SERVICE ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** START VIRTUAL SERVICE ACTION FAILED ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** START VIRTUAL SERVICE JOB FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 
