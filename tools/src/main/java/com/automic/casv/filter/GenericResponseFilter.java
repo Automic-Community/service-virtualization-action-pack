@@ -5,6 +5,7 @@ import java.util.List;
 import javax.json.JsonObject;
 import javax.ws.rs.core.MultivaluedMap;
 
+import com.automic.casv.constants.Constants;
 import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
@@ -19,15 +20,12 @@ import com.sun.jersey.api.client.filter.ClientFilter;
 
 public class GenericResponseFilter extends ClientFilter {
 
-    private static final int HTTP_SUCCESS_START = 200;
-    private static final int HTTP_SUCCESS_END = 299;
-
     private static final String RESPONSE_CODE = "Response Code [%s]";
     private static final String RESPONSE_MSG = RESPONSE_CODE + " Message : [%s]";
 
     @Override
     public ClientResponse handle(ClientRequest request) {
-
+        boolean ignoreHttpError = (request.getHeaders().remove("IgnoreDeployFailure") != null);
         ClientResponse response = getNext().handle(request);
         String msg = null;
         if (response.getClientResponseStatus() != null
@@ -44,8 +42,10 @@ public class GenericResponseFilter extends ClientFilter {
         // print json or xml depending on its content-type
         MultivaluedMap<String, String> responseHeaders = response.getHeaders();
         List<String> contentType = responseHeaders.get("Content-Type");
-        if (contentType != null) {
-            if (!(response.getStatus() >= HTTP_SUCCESS_START && response.getStatus() <= HTTP_SUCCESS_END)) {
+        List<String> contenLength = responseHeaders.get("Content-Length");
+
+        if (contentType != null && !ignoreHttpError) {
+            if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
                 if (contentType.get(0).toLowerCase().contains("json")) {
                     JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
                     ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
@@ -56,6 +56,9 @@ public class GenericResponseFilter extends ClientFilter {
                 String responseMsg = response.getEntity(String.class);
                 throw new AutomicRuntimeException(responseMsg);
             }
+        } else if (!(contenLength != null && Integer.parseInt(contenLength.get(0)) > 0)) {
+            String responseMsg = "Failed to process the request";
+            throw new AutomicRuntimeException(responseMsg);
         }
 
         return response;
