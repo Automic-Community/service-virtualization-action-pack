@@ -320,7 +320,82 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
+
+= General description =
+This action runs a Test Suite on CA DevTest. You need to provide atleast the full file path to the Test Suite (.ste  file). You could also provide the Configuration file to be used when executing the test suite.
+To run test cases asynchronously mark "Asynchronous call" field YES.
+
+Note:
+* The actions passes or fails based on the test result xml. Sample xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<invokeResult>
+  <method name="RunSuite">
+    <params>
+      <param name="suitePath" value="C:/Program Files/CA/DevTest/Projects/Cars v9/Tests/Suites/JIRA_restsuite.ste" />
+      <param name="configPath" value="C:/Program Files/CA/DevTest/Projects/Cars v9/Configs/jira_get_issue.config" />
+      <param name="callbackKey" value="192C6F07156211E7B87E005056BD12C1" />
+    </params>
+  </method>
+  <status>OK</status>
+  <result>
+    <status>ENDED</status>
+    <reportUrl><![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?suiteRunId=193129F8156211E7B87E005056BD12C1]]]><![CDATA[]></reportUrl>
+    <runId>193129F8156211E7B87E005056BD12C1</runId>
+    <pass count="1" />
+    <fail count="0" />
+    <abort count="0" />
+    <warning count="0" />
+    <error count="0" />
+    <message>suite,serial</message>
+  </result>
+</invokeResult>
+
+* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
+* Element invokeResult.result.status is not part of test result for Asynchronous call.
+
+= Failure Conditions =
+none
+
+= Inputs =
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Test Suite Path	: Provide full file path to the Test suite (.ste) file. E.g.  C:/MyTests/alltests.ste
+* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/alltests.config
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+* To run Test Case synchronously
+Test Suite Path		: C:/MyTests/alltests.ste
+Config Path		: C:/MyTests/getrecord.config
+Asynchronous call	: NO
+
+* To run Test asynchronously
+Test Suite Path		: C:/MyTests/alltests.ste
+Config Path		: C:/MyTests/getrecord.config
+Asynchronous call	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

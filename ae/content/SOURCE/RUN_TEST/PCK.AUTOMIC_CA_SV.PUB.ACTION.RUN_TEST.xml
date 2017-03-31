@@ -326,7 +326,87 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST 
+
+= General description =
+This action runs individual Test Case on DevTest. You need to provide atleast the full file path to the Test Case document(.tst file). Other options that you can provide are staging document, configuration file and coordinator server name.
+To run test cases asynchronously mark "Asynchronous call" field YES.
+
+Note:
+* The actions passes or fails based on the test result xml. Sample xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<invokeResult>
+  <method name="RunTest">
+    <params>
+      <param name="testCasePath" value="C:/CA/DevTest/Projects/Cars v9/Tests/abc.tst" />
+      <param name="configPath" value="C:/CA/DevTest/Projects/Cars v9/Configs/abc.config" />
+      <param name="callbackKey" value="BA6AE203156011E7B87E005056BD12C1" />
+      <param name="coordName" value="Coordinator" />
+      <param name="stagingDocPath" value="C:/CA/DevTest/Projects/Cars v9/Tests/StagingDocs/abc.stg" />
+    </params>
+  </method>
+  <status>OK</status>
+  <result>
+    <status>ENDED</status> <reportUrl><![CDATA[http://devtest.com:1507/devtest/#/main/testMonitorTests/overview?testRunId=BAFC4D2C156011E7B229005056BD12C1]]]><![CDATA[]></reportUrl>
+    <runId>BAFC4D2C156011E7B229005056BD12C1</runId>
+    <pass count="1" />
+    <fail count="0" />
+    <abort count="0" />
+    <warning count="0" />
+    <error count="0" />
+    <message>jira_get_issue,Run1User1Cycle</message>
+  </result>
+</invokeResult>
+
+* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
+* Element invokeResult.result.status is not part of test result for Asynchronous call.
+
+= Failure Conditions =
+none
+
+= Inputs =
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Test Case Path	: Provide full file path to the Test Case file (.tst). This test case file should exist inside a Project. E.g. C:/MyTests/getrecord.tst
+* Staging Doc Path	: Provide full file path to the staging doc. E.g. Eg. C:/MyTests/getrecord.stg
+* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/getrecord.config
+* Coordinator server	: Name of Coordinator server. E.g. Coordinator
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+* To run Test Case synchronously
+Test Case Path		: C:/MyTests/getrecord.tst
+Staging Doc Path	: C:/MyTests/getrecord.stg
+Config Path		: C:/MyTests/getrecord.config
+Coordinator server	: Coordinator
+Asynchronous call	: NO
+
+* To run Test asynchronously
+Test Case Path		: C:/MyTests/getrecord.tst
+Coordinator server	: Coordinator
+Asynchronous call	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>
