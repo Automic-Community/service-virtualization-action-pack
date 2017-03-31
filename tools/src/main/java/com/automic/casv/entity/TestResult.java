@@ -14,7 +14,8 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.automic.casv.exception.AutomicRuntimeException;
+import com.automic.casv.exception.AutomicException;
+import com.automic.casv.util.ConsoleWriter;
 
 public class TestResult {
 
@@ -22,7 +23,7 @@ public class TestResult {
 
     private String resultStatus;
 
-    public static TestResult getInstance(String xmlResponse) {
+    public static TestResult getInstance(String xmlResponse) throws AutomicException {
         try {
             InputSource source = new InputSource(new StringReader(xmlResponse));
 
@@ -39,7 +40,8 @@ public class TestResult {
             return new TestResult(status, resultStatus);
 
         } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
-            throw new AutomicRuntimeException(ex.getMessage());
+            ConsoleWriter.writeln(ex);
+            throw new AutomicException(ex.getMessage());
         }
 
     }
