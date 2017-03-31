@@ -36,7 +36,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
         initAndValidateInputs();
 
         // request to rest api
-        WebResource webResource = getClient().path("lisa-invoke").path("runTestSuite")
+        WebResource webResource = getClient().path("lisa-invoke").path("runSuite")
                 .queryParam("suitePath", testSuiteFile);
 
         if (this.configFile != null) {
