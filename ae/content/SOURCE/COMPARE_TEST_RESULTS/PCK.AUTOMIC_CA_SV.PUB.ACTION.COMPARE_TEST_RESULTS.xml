@@ -55,7 +55,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_BASELINE_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASELINE_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_TEST_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_TEST_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 </PRPTBOX>
@@ -112,7 +111,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_BASELINE_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASELINE_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_TEST_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_TEST_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 </PRPTBOX>
@@ -169,7 +167,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_BASELINE_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASELINE_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_TEST_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_TEST_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 </PRPTBOX>
@@ -273,7 +270,81 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_SV.PUB.ACTION.COMPARE_TEST_RESULTS
+
+= General description =
+This action compares test results. The results are provided in the form of an XML string. 
+If all of the following comparisons return positive result then action saves TRUE to AE variable, otherwise FALSE.
+1. invoke result->status should be OK and should match for both test results.
+2. invoke result->result->status should match for both test results.
+3. invoke result->result->pass count should match for both test results
+4. invoke result->result->fail count should match for both test results
+5. invoke result->result->abort count should match for both test results
+6. invoke result->result->warning count should match for both test results
+7. invoke result->result->error count should match for both test results
+
+Note: 
+
+= Failure Conditions =
+* Invalid XML string(content).
+
+= Inputs =
+* Baseline XML String	:Provide baseline test response as XML string. See examples for more details.
+* Test XML String	:Provide another test response as XML string to compare. See examples for more details.
+* Sudo Password         : The password for the sudo command.
+* Options              	: Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+UC4RB_SV_ARE_RESULTS_EQUAL : Either true or false
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is 1 in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+Sample baseline/test xml string
+
+<?xml version="1.0" encoding="UTF-8"?>
+<invokeResult>
+    <method name="RunTest">
+        <params>
+            <param name="testCasePath" value="C:\Program Files\CA\DevTest\Projects\Cars v9\Tests\jira_get_issue.tst" />
+            <param name="configPath" value="" />
+            <param name="callbackKey" value="52E1B37F147D11E79D8D005056BD12C1" />
+            <param name="coordName" value="Coordinator" />
+            <param name="stagingDocPath" value="" />
+        </params>
+    </method>
+    <status>OK</status>
+    <result>
+        <status>ENDED</status>
+        <reportUrl>
+            <![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=534222F1147D11E7BAEA005056BD12C1]]]><![CDATA[]>
+        </reportUrl>
+        <runId>534222F1147D11E7BAEA005056BD12C1</runId>
+        <pass count="1" />
+        <fail count="0" />
+        <abort count="0" />
+        <warning count="0" />
+        <error count="0" />
+        <message>jira_get_issue,Run1User1Cycle</message>
+    </result>
+</invokeResult>
+
+]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

@@ -27,7 +27,7 @@ public class CompareTestResultsAction extends AbstractAction {
 		 TestResult baselineTestResult = TestResult.getInstance(baselineXML);
 		 TestResult otherTestResult = TestResult.getInstance(testXML);
 		 ConsoleWriter.writeln("Baseline XML - "+baselineTestResult);
-		 ConsoleWriter.writeln("Test XML - "+otherTestResult);
+		 ConsoleWriter.writeln("Test XML "+otherTestResult);
 		 ConsoleWriter.writeln("UC4RB_SV_ARE_RESULTS_EQUAL ::="+baselineTestResult.equals(otherTestResult));
 
 	}
