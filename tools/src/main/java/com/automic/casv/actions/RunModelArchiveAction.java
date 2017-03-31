@@ -13,7 +13,7 @@ import com.sun.jersey.api.client.WebResource;
  * 
  *
  */
-public class RunMarAction extends AbstractHttpAction {
+public class RunModelArchiveAction extends AbstractHttpAction {
 
     // file path of Mar. This is a .mar or .mari file
     private String marOrMariFile;
@@ -21,7 +21,7 @@ public class RunMarAction extends AbstractHttpAction {
     // whether test are executed asynchronously
     private boolean async;
 
-    public RunMarAction() {
+    public RunModelArchiveAction() {
         addOption("marormari", true, "Mar or Mari Path");
         addOption("async", false, "Asynchronous call");
     }
@@ -56,7 +56,7 @@ public class RunMarAction extends AbstractHttpAction {
     }
 
     // get test result and print in the job report whether test passed or not
-    private void prepareOutput(ClientResponse response) {
+    private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
         TestResult testResult = TestResult.getInstance(xmlResponse);

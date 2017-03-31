@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE">
 <XHEADER state="1">
-<Title>Deploy Virtual Service</Title>
+<Title>Run Model Archive</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -52,22 +52,20 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
+<UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -98,7 +96,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="DEPLOY_VIRTUAL_SERVICE" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_SV.PRV.JOB.DEPLOY_VIRTUAL_SERVICE@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="RUN_MODEL_ARCHIVE" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_SV.PRV.JOB.RUN_MODEL_ARCHIVE@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -128,22 +126,20 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
+<UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -190,22 +186,20 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">
-<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
-<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_SV_SSL_VALIDATIONs.00>
-<UC4RB_SV_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_USERNAME#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">
+<UC4RB_SV_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION"/>
+<UC4RB_SV_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION">NO</UC4RB_SV_SSL_VALIDATIONs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
+<UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
+<UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -281,14 +275,14 @@
 <Mode>1</Mode>
 </VALUE>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.RUN_TEST_CONNECTION" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
@@ -327,28 +321,51 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
- PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE
+PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
 
 = General description =
-This action deploy's the Virtual Service over VS Environment using MAR File Path or URI. 
+This action runs a Mar or Mari file on CA DevTest. You need to provide atleast the full file path to the .mar or .mari  file. To run test cases asynchronously mark "Asynchronous call" field YES.
+
+Note:
+* The actions passes or fails based on the test result xml. Sample xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<invokeResult>
+  <method name="RunMar">
+    <params>
+      <param name="marOrMariPath" value="C:/Program Files/CA/DevTest/Projects/Cars v9/Tests/jira_get_issue.mari" />
+      <param name="callbackKey" value="B5713D5F146111E79D8D005056BD12C1" />
+    </params>
+  </method>
+  <status>OK</status>
+  <result>
+    <status>ENDED</status>
+    <reportUrl><![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=B6223D9C146111E7BAEA005056BD12C1]]]><![CDATA[]></reportUrl>
+    <runId>B6223D9C146111E7BAEA005056BD12C1</runId>
+    <pass count="1" />
+    <fail count="0" />
+    <abort count="0" />
+    <warning count="0" />
+    <error count="0" />
+    <message>jira_get_issue,Run1User1Cycle</message>
+  </result>
+</invokeResult>
+
+* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
+* Element invokeResult.result.status is not part of test result for Asynchronous call.
 
 = Failure Conditions =
-* Action Fails if both or none of inputs are provided i.e MAR File Path or MAR File URI.
-* Action fails if VS is already deployed.
+none
 
 = Inputs =
-* API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
-* Username			: Specify username for authentication.
-* Password			: Specify password for authentication.
-* Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
-* VSE Name			: Provide name of the VS Environment in which VS is present. Eg. VSE
-* MAR File Path 		: Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar
-* MAR File URI			: Provide URI to the MAR file which will be used for deployment. E.g. file:///C:/CASV/Test.mar 
-* Sudo Password         	: The password for the sudo command.
-* Options              	 	: Run using sudo password (and sudo username if specified).
-* Sudo Username         	: The username to be used for the sudo command. 	
-* Overwrite Agent		: Overwrites the default agent
-* Overwrite Login		: Overwrites the default login
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* MAR or MARI Path	: Provide full file path to the Mar or Mari file. E.g.  C:/MyTests/getrecord.mari
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
 
 = Behavior =
 (none)
@@ -358,7 +375,7 @@ This action deploy's the Virtual Service over VS Environment using MAR File Path
 
 = Outputs =
 * Return code is 0 in case of success.
-* Return code is 1 in case of failure.
+* Return code is non-zero in case of failure.
 
 = Rollback =
 (none)
@@ -367,7 +384,13 @@ This action deploy's the Virtual Service over VS Environment using MAR File Path
 AE logs will be displayed in the AE report.
 
 = Example =
-(none)]]></DOC>
+* To run Test Case synchronously
+MAR or MARI Path	: C:/MyTests/getrecord.mari
+Asynchronous call	: NO
+
+* To run Test asynchronously
+MAR or MARI Path	: C:/MyTests/getrecord.mari
+Asynchronous call	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

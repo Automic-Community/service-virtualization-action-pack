@@ -39,7 +39,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
         WebResource webResource = getClient().path("lisa-invoke").path("runSuite")
                 .queryParam("suitePath", testSuiteFile);
 
-        if (this.configFile != null) {
+        if (CommonUtil.checkNotEmpty(this.configFile)) {
             webResource = webResource.queryParam("configPath", configFile);
         }
 
@@ -61,9 +61,6 @@ public class RunTestSuiteAction extends AbstractHttpAction {
 
         // validate config param
         this.configFile = getOptionValue("config");
-        if (this.configFile != null) {
-            CaSvValidator.checkNotEmpty(this.configFile, "Config Path");
-        }
 
         // get async option from commandline
         this.async = CommonUtil.convert2Bool(getOptionValue("async"));
@@ -71,7 +68,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
     }
 
     // get test result and print in the job report whether test passed or not
-    private void prepareOutput(ClientResponse response) {
+    private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
         TestResult testResult = TestResult.getInstance(xmlResponse);

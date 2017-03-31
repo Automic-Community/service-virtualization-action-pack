@@ -48,15 +48,15 @@ public class RunTestAction extends AbstractHttpAction {
         // request to rest api
         WebResource webResource = getClient().path("lisa-invoke").path("runTest")
                 .queryParam("testCasePath", testCaseFile);
-        if (this.stagingDoc != null) {
+        if (CommonUtil.checkNotEmpty(this.stagingDoc)) {
             webResource = webResource.queryParam("stagingDocPath", stagingDoc);
         }
 
-        if (this.configFile != null) {
+        if (CommonUtil.checkNotEmpty(this.configFile)) {
             webResource = webResource.queryParam("configPath", configFile);
         }
 
-        if (this.coordinator != null) {
+        if (CommonUtil.checkNotEmpty(this.coordinator)) {
             webResource = webResource.queryParam("coordName", coordinator);
         }
 
@@ -77,21 +77,12 @@ public class RunTestAction extends AbstractHttpAction {
 
         // validate staging doc
         this.stagingDoc = getOptionValue("stagingdoc");
-        if (this.stagingDoc != null) {
-            CaSvValidator.checkNotEmpty(this.stagingDoc, "Staging Doc Path");
-        }
 
         // validate config param
         this.configFile = getOptionValue("config");
-        if (this.configFile != null) {
-            CaSvValidator.checkNotEmpty(this.configFile, "Config Path");
-        }
 
         // validate coordinator
         this.coordinator = getOptionValue("coordinator");
-        if (this.coordinator != null) {
-            CaSvValidator.checkNotEmpty(this.coordinator, "Coordinator Server");
-        }
 
         // get async option from commandline
         this.async = CommonUtil.convert2Bool(getOptionValue("async"));
@@ -99,7 +90,7 @@ public class RunTestAction extends AbstractHttpAction {
     }
 
     // get test result and print in the job report whether test passed or not
-    private void prepareOutput(ClientResponse response) {
+    private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
         TestResult testResult = TestResult.getInstance(xmlResponse);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.DELETE_VIRTUAL_SERVICE@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.RUN_MODEL_ARCHIVE@GENERIC">
 <XHEADER state="1">
-<Title>Delete Virtual Service</Title>
+<Title>Run Model Archive</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -104,28 +104,22 @@
 : ENDIF
 
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
-! Log parameters specific to action
-: SET &UC4RB_LOGGING_PARAMETER# = "Fail if VS does not exist"
-: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_SV_VS_EXIST#"
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
-
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "DeleteVSAction"
+: SET &ACTION_NAME# = "RunModelArchiveAction"
 
 ! Build java arguments
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD
-! VSE Name
-: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_ENV#
+: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PREPARE_CMD_RUN_TEST
+
+! Mar or Mari file
+: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_TEST_FILE#
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsename &UC4RB_SV_ESCAPED_STRING#")
-! Virtual Service Name
-: SET &UC4RB_SV_ESCAPED_STRING# = &UC4RB_SV_VS_NAME#
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -vsname &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -marormari &UC4RB_SV_ESCAPED_STRING#")
+
+! Run Asynchronously
+: SET &UC4RB_SV_CMD# = STR_CAT(&UC4RB_SV_CMD#, " -async &UC4RB_SV_ASYNC#")
 
 : PRINT &UC4RB_SV_CMD#
 
@@ -133,8 +127,8 @@
   &UC4RB_SV_CMD#
 
 ! Status messages
-: SET &UC4RB_LOGGING_INFO# = "******** DELETE VIRTUAL SERVICE ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** DELETE VIRTUAL SERVICE JOB FAILED ********"
+: SET &UC4RB_LOGGING_INFO# = "******** RUN MODEL ARCHIVE ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** RUN MODEL ARCHIVE ACTION FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 
@@ -148,23 +142,24 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[:IF &UC4RB_SV_VS_EXIST# EQ "NO"
-:  SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:  IF &STATUS# GT 0
-:      SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","*message*","COL=DELIMITER", 'DELIMITER=*:*')
-:      PROCESS &HND#
-:           SET &KEY# = GET_PROCESS_LINE(&HND#,1)
-:           SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:           SET &SEARCHSTRING#="Virtual service name is invalid"
-:           SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
-:             IF &POS# NE 0
-:                MODIFY_STATE RETCODE=0
-:                TERM_PROCESS
-:             ENDIF
+<OSCRI><![CDATA[: SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+
+: IF &STATUS# EQ 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","UC4RB_SV*","COL=DELIMITER", 'DELIMITER=*::=*')
+:    PROCESS &HND#
+:      SET &KEY# = GET_PROCESS_LINE(&HND#,1)
+:      SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
+:      IF &KEY# = "UC4RB_SV_TEST_RESULT"
+:          IF &VALUE# NE "true"
+:              MODIFY_STATE RETCODE=51
+:              MODIFY_STATE STATUS_TEXT="Error in running the test"
+:              TERM_PROCESS
+:          ENDIF
+:      ENDIF
 :    ENDPROCESS
 :    CLOSE_PROCESS &HND#
-:  ENDIF
-:ENDIF]]></OSCRI>
+: ENDIF
+]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>

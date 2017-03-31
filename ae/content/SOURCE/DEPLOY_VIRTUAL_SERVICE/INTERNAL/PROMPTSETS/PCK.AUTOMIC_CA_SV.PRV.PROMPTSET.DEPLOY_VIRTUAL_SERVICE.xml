@@ -38,7 +38,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SV_MAR_PATHs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="MAR File Path" tooltip="Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.zip" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SV_MAR_PATHs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="MAR File Path" tooltip="Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -59,7 +59,7 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.zip</entry>
+        <entry name="tooltip">Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
@@ -97,7 +97,7 @@
     </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE"></UC4RB_SV_VS_ENVs.00><UC4RB_SV_MAR_PATHs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_PATH#" ReadFromTable="OPSE"></UC4RB_SV_MAR_PATHs.00><UC4RB_SV_MAR_URIs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_URI#" ReadFromTable="OPSE"></UC4RB_SV_MAR_URIs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE">VSE</UC4RB_SV_VS_ENVs.00><UC4RB_SV_MAR_PATHs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_PATH#" ReadFromTable="OPSE"></UC4RB_SV_MAR_PATHs.00><UC4RB_SV_MAR_URIs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_URI#" ReadFromTable="OPSE"></UC4RB_SV_MAR_URIs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

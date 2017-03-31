@@ -16,7 +16,9 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import com.automic.casv.exception.AutomicException;
 import com.automic.casv.exception.AutomicRuntimeException;
+import com.automic.casv.util.ConsoleWriter;
 
 public class TestResult {
 
@@ -29,56 +31,20 @@ public class TestResult {
 	private Integer resultAbort;
 	private Integer resultWarning;
 	private Integer resultError;
-	
-	
+
 	private TestResult(String status, String resultStatus, Integer resultPass, Integer resultFail, Integer resultAbort,
 			Integer resultWarning, Integer resultError) {
 		this.status = status;
 		this.resultStatus = resultStatus;
 		this.resultPass = resultPass;
-	    this.resultFail = resultFail;
-	    this.resultAbort = resultAbort;
-	    this.resultWarning = resultWarning;
-	    this.resultError = resultError;
+		this.resultFail = resultFail;
+		this.resultAbort = resultAbort;
+		this.resultWarning = resultWarning;
+		this.resultError = resultError;
 	}
-	
+
 	private TestResult(String status, String resultStatus) {
-		this(status,resultStatus,null,null,null,null,null);
-	}
-
-	public static TestResult getInstance(String xmlResponse) {
-		try {
-			InputSource source = new InputSource(new StringReader(xmlResponse));
-
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document document = db.parse(source);
-
-			XPathFactory xpathFactory = XPathFactory.newInstance();
-			XPath xpath = xpathFactory.newXPath();
-
-			String status = xpath.evaluate("/invokeResult/status", document);
-			String resultStatus = xpath.evaluate("/invokeResult/result/status", document);
-
-			return new TestResult(status, resultStatus);
-
-		} catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
-			throw new AutomicRuntimeException(ex.getMessage());
-		}
-
-	}
-
-	/**
-	 * return if Test Result have passed or not
-	 * 
-	 * @return
-	 */
-	public boolean isTestPassed() {
-		if (!"OK".equals(this.status) || (!"".equals(this.resultStatus) && !"ENDED".equals(this.resultStatus))) {
-			return false;
-		}
-
-		return true;
+		this(status, resultStatus, null, null, null, null, null);
 	}
 
 	public static TestResult getInstance(File file) {
@@ -100,7 +66,8 @@ public class TestResult {
 			Integer resultWarning = new Integer(xpath.evaluate("/invokeResult/result/warning/@count", document));
 			Integer resultError = new Integer(xpath.evaluate("/invokeResult/result/error/@count", document));
 
-			return new TestResult(status, resultStatus,resultPass,resultFail,resultAbort,resultWarning,resultError);
+			return new TestResult(status, resultStatus, resultPass, resultFail, resultAbort, resultWarning,
+					resultError);
 
 		} catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
 			throw new AutomicRuntimeException(ex.getMessage());
@@ -108,26 +75,63 @@ public class TestResult {
 
 	}
 
-	
-	@Override
-	public boolean equals(Object obj) {
-		 if (this == obj) return true;
-		    if (obj == null) return false;
-		    if (this.getClass() != obj.getClass()) return false;
-		    TestResult anotherObj = (TestResult) obj;
-		    if (!(this.status.equals("OK") && (this.status.equals(anotherObj.status)))) return false;
-		    if (!this.resultStatus.equals(anotherObj.resultStatus)) return false;
-		    if (!this.resultPass.equals(anotherObj.resultPass)) return false;
-		    if (!this.resultFail.equals(anotherObj.resultFail)) return false;
-		    if (!this.resultAbort.equals(anotherObj.resultAbort)) return false;
-		    if (!this.resultWarning.equals(anotherObj.resultWarning)) return false;
-		    if (!this.resultError.equals(anotherObj.resultError)) return false;
-			return true;
+	public boolean isTestPassed() {
+		if (!"OK".equals(this.status) || (!"".equals(this.resultStatus) && !"ENDED".equals(this.resultStatus))) {
+			return false;
+		}
+
+		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public static TestResult getInstance(String xmlResponse) throws AutomicException {
+		try {
+			InputSource source = new InputSource(new StringReader(xmlResponse));
+
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document document = db.parse(source);
+
+			XPathFactory xpathFactory = XPathFactory.newInstance();
+			XPath xpath = xpathFactory.newXPath();
+
+			String status = xpath.evaluate("/invokeResult/status", document);
+			String resultStatus = xpath.evaluate("/invokeResult/result/status", document);
+
+			return new TestResult(status, resultStatus);
+
+		} catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
+			ConsoleWriter.writeln(ex);
+			throw new AutomicException(ex.getMessage());
+		}
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
+		TestResult anotherObj = (TestResult) obj;
+		if (!(this.status.equals("OK") && (this.status.equals(anotherObj.status))))
+			return false;
+		if (!this.resultStatus.equals(anotherObj.resultStatus))
+			return false;
+		if (!this.resultPass.equals(anotherObj.resultPass))
+			return false;
+		if (!this.resultFail.equals(anotherObj.resultFail))
+			return false;
+		if (!this.resultAbort.equals(anotherObj.resultAbort))
+			return false;
+		if (!this.resultWarning.equals(anotherObj.resultWarning))
+			return false;
+		if (!this.resultError.equals(anotherObj.resultError))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -148,7 +152,5 @@ public class TestResult {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
 
 }
