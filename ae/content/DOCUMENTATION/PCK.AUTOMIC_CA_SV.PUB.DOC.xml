@@ -48,7 +48,13 @@ Following actions are supported for CA SV.
 * Action Description: This action deploy's the Virtual Service over VS Environment using MAR File Path or URI. 
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE  
-* Action Description: This action redeploy's the Virtual Service over VS Environment using MAR File Path or URI.]]></DOC>
+* Action Description: This action redeploy's the Virtual Service over VS Environment using MAR File Path or URI.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST
+* Action Description: This action runs individual Test Case on DevTest.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
+* Action Description: This action runs a Test Suite on DevTest.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>
