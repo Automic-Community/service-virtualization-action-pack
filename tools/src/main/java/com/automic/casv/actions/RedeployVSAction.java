@@ -1,12 +1,15 @@
 package com.automic.casv.actions;
 
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.json.JsonObject;
 import javax.ws.rs.core.MediaType;
 
 import com.automic.casv.constants.Constants;
 import com.automic.casv.exception.AutomicException;
+import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 import com.automic.casv.validator.CaSvValidator;
@@ -14,6 +17,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
+
 /**
  * This action takes a posted mar and redeploys it to the VSE as virtual service.
  * 
@@ -59,7 +63,7 @@ public class RedeployVSAction extends AbstractHttpAction {
             ConsoleWriter.newLine();
             deployService(false);
         }
-        
+
     }
 
     private String deployService(boolean flag) throws AutomicException {
@@ -79,11 +83,18 @@ public class RedeployVSAction extends AbstractHttpAction {
                 .header("IgnoreDeployFailure", flag).type(part.getMediaType()).post(ClientResponse.class, part);
 
         JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-        if (response.getStatus() == 404) {
-            String msg = jsonObjectResponse.getString("message");
-            serviceName = msg.replaceFirst("There is already a service with the name", "").trim();
-        }
         ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
+        if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
+            String msg = jsonObjectResponse.getString("message");
+
+            if (containsIgnoreCase(msg, Constants.SERVICE_ALREADY_EXIST)) {
+                serviceName = msg.replaceFirst("There is already a service with the name", "").trim();
+            } else {
+                String responseMsg = response.getEntity(String.class);
+                throw new AutomicRuntimeException(responseMsg);
+            }
+
+        }
 
         return serviceName;
     }
@@ -110,6 +121,16 @@ public class RedeployVSAction extends AbstractHttpAction {
         }
 
         marURI = getOptionValue("maruri");
+    }
+
+    public boolean containsIgnoreCase(String source, String key) {
+
+        if (!CommonUtil.checkNotEmpty(source))
+            return false;
+
+        Pattern p = Pattern.compile(key, Pattern.CASE_INSENSITIVE + Pattern.LITERAL);
+        Matcher m = p.matcher(source);
+        return m.find();
     }
 
 }
