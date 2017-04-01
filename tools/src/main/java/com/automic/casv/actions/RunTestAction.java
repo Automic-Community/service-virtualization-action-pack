@@ -75,13 +75,13 @@ public class RunTestAction extends AbstractHttpAction {
         this.testCaseFile = getOptionValue("testcasefile");
         CaSvValidator.checkNotEmpty(this.testCaseFile, "Test Case Path");
 
-        // validate staging doc
+        // initialize staging doc
         this.stagingDoc = getOptionValue("stagingdoc");
 
-        // validate config param
+        // initialize config param
         this.configFile = getOptionValue("config");
 
-        // validate coordinator
+        // initialize coordinator
         this.coordinator = getOptionValue("coordinator");
 
         // get async option from commandline

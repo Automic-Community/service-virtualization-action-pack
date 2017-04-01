@@ -59,7 +59,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
         this.testSuiteFile = getOptionValue("testsuitefile");
         CaSvValidator.checkNotEmpty(this.testSuiteFile, "Test Suite Path");
 
-        // validate config param
+        // initialize config param
         this.configFile = getOptionValue("config");
 
         // get async option from commandline

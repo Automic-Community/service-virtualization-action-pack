@@ -58,7 +58,7 @@ public class TestResult {
         this(status, resultStatus, null, null, null, null, null);
     }
 
-    public static TestResult getInstance(File file) {
+    public static TestResult getInstance(File file) throws AutomicException {
         try {
             InputSource source = new InputSource(new FileInputStream(file));
 
@@ -80,11 +80,12 @@ public class TestResult {
             return new TestResult(status, resultStatus, resultPass, resultFail, resultAbort, resultWarning, resultError);
 
         } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
-            throw new AutomicRuntimeException(ex.getMessage());
+            ConsoleWriter.writeln(ex);
+            throw new AutomicException(ex.getMessage());
         }
 
     }
-    
+
     /**
      * return if Test Result have passed or not
      * 
