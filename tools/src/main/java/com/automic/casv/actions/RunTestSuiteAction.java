@@ -71,7 +71,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
-        TestResult testResult = TestResult.getInstance(xmlResponse);
+        TestResult testResult = TestResult.getInstance(xmlResponse, this.async);
 
         ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
 
