@@ -20,7 +20,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import com.automic.casv.exception.AutomicException;
-import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 
@@ -169,27 +168,38 @@ public class TestResult {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (this.getClass() != obj.getClass())
+        }
+        if (this.getClass() != obj.getClass()) {
             return false;
+        }
+
         TestResult anotherObj = (TestResult) obj;
-        if (!(this.status.equals("OK") && (this.status.equals(anotherObj.status))))
+        if (!(this.status.equals("OK") && (this.status.equals(anotherObj.status)))) {
             return false;
-        if (!this.resultStatus.equals(anotherObj.resultStatus))
+        }
+        if (!this.resultStatus.equals(anotherObj.resultStatus)) {
             return false;
-        if (!this.resultPass.equals(anotherObj.resultPass))
+        }
+        if (!this.resultPass.equals(anotherObj.resultPass)) {
             return false;
-        if (!this.resultFail.equals(anotherObj.resultFail))
+        }
+        if (!this.resultFail.equals(anotherObj.resultFail)) {
             return false;
-        if (!this.resultAbort.equals(anotherObj.resultAbort))
+        }
+        if (!this.resultAbort.equals(anotherObj.resultAbort)) {
             return false;
-        if (!this.resultWarning.equals(anotherObj.resultWarning))
+        }
+        if (!this.resultWarning.equals(anotherObj.resultWarning)) {
             return false;
-        if (!this.resultError.equals(anotherObj.resultError))
+        }
+        if (!this.resultError.equals(anotherObj.resultError)) {
             return false;
+        }
         return true;
     }
 
