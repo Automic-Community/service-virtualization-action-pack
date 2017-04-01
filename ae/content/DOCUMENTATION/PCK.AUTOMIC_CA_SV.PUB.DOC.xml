@@ -57,7 +57,10 @@ Following actions are supported for CA SV.
 * Action Description: This action runs a Test Suite on DevTest.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
-* Action Description: This action runs a Mar or Mari file on DevTest.]]></DOC>
+* Action Description: This action runs a Mar or Mari file on DevTest.
+
+* Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.COMPARE_TEST_RESULTS
+* Action Description: This action compares two test results xml string.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>
