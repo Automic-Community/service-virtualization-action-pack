@@ -84,18 +84,16 @@ public class RedeployVSAction extends AbstractHttpAction {
 
         JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
         ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
-        if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
+       
+        if (response.getStatus() == Constants.HTTP_NOT_FOUND) {
             String msg = jsonObjectResponse.getString("message");
-
             if (containsIgnoreCase(msg, Constants.SERVICE_ALREADY_EXIST)) {
                 serviceName = msg.replaceFirst("There is already a service with the name", "").trim();
             } else {
                 String responseMsg = response.getEntity(String.class);
                 throw new AutomicRuntimeException(responseMsg);
             }
-
         }
-
         return serviceName;
     }
 
@@ -123,11 +121,10 @@ public class RedeployVSAction extends AbstractHttpAction {
         marURI = getOptionValue("maruri");
     }
 
-    public boolean containsIgnoreCase(String source, String key) {
-
-        if (!CommonUtil.checkNotEmpty(source))
+    private boolean containsIgnoreCase(String source, String key) {
+        if (!CommonUtil.checkNotEmpty(source)) {
             return false;
-
+        }
         Pattern p = Pattern.compile(key, Pattern.CASE_INSENSITIVE + Pattern.LITERAL);
         Matcher m = p.matcher(source);
         return m.find();

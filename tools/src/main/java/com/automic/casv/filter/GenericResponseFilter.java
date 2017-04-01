@@ -25,7 +25,7 @@ public class GenericResponseFilter extends ClientFilter {
 
     @Override
     public ClientResponse handle(ClientRequest request) {
-        boolean ignoreHttpError = (request.getHeaders().remove("IgnoreDeployFailure") != null);
+        boolean ignoreHttpError = (request.getHeaders().remove(Constants.IGNORE_DEPLOY_FAILURE) != null);
         ClientResponse response = getNext().handle(request);
         String msg = null;
         if (response.getClientResponseStatus() != null
@@ -38,13 +38,16 @@ public class GenericResponseFilter extends ClientFilter {
 
         // printing response code and message on console
         ConsoleWriter.writeln(msg);
-
+        // Redeploy service when package already deployed
+        if (ignoreHttpError && response.getStatus() == Constants.HTTP_NOT_FOUND) {
+            return response;
+        }
         // print json or xml depending on its content-type
         MultivaluedMap<String, String> responseHeaders = response.getHeaders();
         List<String> contentType = responseHeaders.get("Content-Type");
         List<String> contenLength = responseHeaders.get("Content-Length");
 
-        if (contentType != null && !ignoreHttpError) {
+        if (contentType != null) {
             if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
                 if (contentType.get(0).toLowerCase().contains("json")) {
                     JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());

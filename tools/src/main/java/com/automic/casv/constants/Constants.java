@@ -17,6 +17,7 @@ public class Constants {
 
     public static final int HTTP_SUCCESS_START = 200;
     public static final int HTTP_SUCCESS_END = 299;
+    public static final int HTTP_NOT_FOUND = 404;
 
     public static final String BASE_URL = "baseurl";
     public static final String USERNAME = "username";
@@ -34,6 +35,7 @@ public class Constants {
     // Accept type for the enpoints
     public static final String START_STOP_VS_ACCEPT_TYPE = "application/vnd.ca.lisaInvoke.virtualService+json";
     public static final String SERVICE_ALREADY_EXIST = "There is already a service with the name";
+    public static final String IGNORE_DEPLOY_FAILURE = "IgnoreDeployFailure";
 
     private Constants() {
     }
