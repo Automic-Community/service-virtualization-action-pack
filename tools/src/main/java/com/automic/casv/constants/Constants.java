@@ -34,6 +34,10 @@ public class Constants {
     // Accept type for the enpoints
     public static final String START_STOP_VS_ACCEPT_TYPE = "application/vnd.ca.lisaInvoke.virtualService+json";
     public static final String SERVICE_ALREADY_EXIST = "There is already a service with the name";
+    
+    public static final String TEST_XML = "testXML";
+
+    public static final String BASELINE_XML = "baselineXML";
 
     private Constants() {
     }

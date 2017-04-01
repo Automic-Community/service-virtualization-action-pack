@@ -2,6 +2,7 @@ package com.automic.casv.actions;
 
 import java.io.File;
 
+import com.automic.casv.constants.Constants;
 import com.automic.casv.entity.TestResult;
 import com.automic.casv.exception.AutomicException;
 import com.automic.casv.util.CommonUtil;
@@ -10,13 +11,15 @@ import com.automic.casv.validator.CaSvValidator;
 
 public class CompareTestResultsAction extends AbstractAction {
 	
-	  private File baselineXML;
+	 
+
+	private File baselineXML;
 	  
 	  private File testXML;
 	  
 	  public CompareTestResultsAction() {
-	        addOption("baselineXML", true, "Baseline XML file");
-	        addOption("testXML", true, "Test XML file");
+	        addOption(Constants.BASELINE_XML, true, "Baseline XML file");
+	        addOption(Constants.TEST_XML, true, "Test XML file");
 	       
 	    }
 
@@ -33,13 +36,13 @@ public class CompareTestResultsAction extends AbstractAction {
 	}
 
 	private void prepareInputs() throws AutomicException {
-		String temp = getOptionValue("baselineXML");
+		String temp = getOptionValue(Constants.BASELINE_XML);
         if (CommonUtil.checkNotEmpty(temp)) {
         	baselineXML = new File(temp);
             CaSvValidator.checkFileExists(baselineXML, "Baseline XML temp file path");
         }
         
-        temp = getOptionValue("testXML");
+        temp = getOptionValue(Constants.TEST_XML);
         if (CommonUtil.checkNotEmpty(temp)) {
         	testXML = new File(temp);
             CaSvValidator.checkFileExists(testXML, "Test XML temp file path");
