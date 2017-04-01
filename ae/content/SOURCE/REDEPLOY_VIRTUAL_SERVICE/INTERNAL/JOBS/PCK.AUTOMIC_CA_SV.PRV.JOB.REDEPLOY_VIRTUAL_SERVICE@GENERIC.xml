@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_SV.PRV.JOB.REDEPLOY_VIRTUAL_SERVICE@GENERIC">
 <XHEADER state="1">
-<Title/>
+<Title>Redeploy Virtual Service</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -161,47 +161,7 @@
 <OSCRI/>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC><![CDATA[= Action name =
- PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE
-
-= General description =
-This action redeploy's the Virtual Service over VS Environment using MAR File Path or URI. It will removed if any deployment already exists and deploy virtual services.
-
-= Failure Conditions =
-* Action Fails if both or none of inputs are provided i.e MAR File Path or MAR File URI.
-
-= Inputs =
-* API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
-* Username			: Specify username for authentication.
-* Password			: Specify password for authentication.
-* Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
-* VSE Name			: Provide name of the VS Environment in which VS is present. Eg. VSE
-* MAR File Path 		: Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.zip
-* MAR File URI			: Provide URI to the MAR file which will be used for deployment. E.g. file:///C:/CASV/Test.mar 
-* Sudo Password         	: The password for the sudo command.
-* Options              	 	: Run using sudo password (and sudo username if specified).
-* Sudo Username         	: The username to be used for the sudo command. 	
-* Overwrite Agent		: Overwrites the default agent
-* Overwrite Login		: Overwrites the default login
-
-= Behavior =
-(none)
-
-=Return Value=
-(none)
-
-= Outputs =
-* Return code is 0 in case of success.
-* Return code is 1 in case of failure.
-
-= Rollback =
-(none)
-
-= Logging =
-AE logs will be displayed in the AE report.
-
-= Example =
-(none)]]></DOC>
+<DOC/>
 </DOCU_Docu>
 </JOBS_GENERIC>
 </uc-export>

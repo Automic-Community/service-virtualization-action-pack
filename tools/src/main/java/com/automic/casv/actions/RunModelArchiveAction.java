@@ -38,7 +38,7 @@ public class RunModelArchiveAction extends AbstractHttpAction {
         if (this.async) {
             webResource = webResource.queryParam("async", "true");
         }
-
+        ConsoleWriter.writeln("Calling url " + webResource.getURI());
         // submit the request
         ClientResponse response = webResource.get(ClientResponse.class);
         prepareOutput(response);
@@ -59,7 +59,7 @@ public class RunModelArchiveAction extends AbstractHttpAction {
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
-        TestResult testResult = TestResult.getInstance(xmlResponse);
+        TestResult testResult = TestResult.getInstance(xmlResponse, this.async);
 
         ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
 

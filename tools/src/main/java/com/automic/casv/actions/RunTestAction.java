@@ -63,6 +63,8 @@ public class RunTestAction extends AbstractHttpAction {
         if (this.async) {
             webResource = webResource.queryParam("async", "true");
         }
+
+        ConsoleWriter.writeln("Calling url " + webResource.getURI());
         // submit the request
         ClientResponse response = webResource.get(ClientResponse.class);
 
@@ -75,13 +77,13 @@ public class RunTestAction extends AbstractHttpAction {
         this.testCaseFile = getOptionValue("testcasefile");
         CaSvValidator.checkNotEmpty(this.testCaseFile, "Test Case Path");
 
-        // validate staging doc
+        // initialize staging doc
         this.stagingDoc = getOptionValue("stagingdoc");
 
-        // validate config param
+        // initialize config param
         this.configFile = getOptionValue("config");
 
-        // validate coordinator
+        // initialize coordinator
         this.coordinator = getOptionValue("coordinator");
 
         // get async option from commandline
@@ -93,7 +95,7 @@ public class RunTestAction extends AbstractHttpAction {
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
         ConsoleWriter.writeln(xmlResponse);
-        TestResult testResult = TestResult.getInstance(xmlResponse);
+        TestResult testResult = TestResult.getInstance(xmlResponse, this.async);
 
         ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
 

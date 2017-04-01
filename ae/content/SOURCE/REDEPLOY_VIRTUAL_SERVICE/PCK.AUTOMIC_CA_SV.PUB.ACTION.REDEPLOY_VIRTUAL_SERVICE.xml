@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE">
 <XHEADER state="1">
-<Title>Re-Deploy Virtual Service</Title>
+<Title>Redeploy Virtual Service</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -67,16 +67,16 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<PRPTBOX promptset="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -123,7 +123,7 @@
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>0</Mode>
+<Mode>1</Mode>
 </VALUE>
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
@@ -143,16 +143,16 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<PRPTBOX promptset="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -205,16 +205,16 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<PRPTBOX promptset="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO"/>
-<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -278,7 +278,7 @@
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
 <Values/>
-<Mode>0</Mode>
+<Mode>1</Mode>
 </VALUE>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_SV.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
@@ -291,9 +291,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.SUDO" prptmode="1"/>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PRPTS" type="PROMPTSET">
@@ -326,7 +326,47 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+ PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE
+
+= General description =
+This action redeploys the Virtual Service over VS Environment using MAR File Path or URI. If any deployment already exists, it will remove existing virtual service and deploys virtual service again.
+
+= Failure Conditions =
+* Action Fails if both or none of inputs are provided i.e MAR File Path or MAR File URI.
+
+= Inputs =
+* API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
+* Username			: Specify username for authentication.
+* Password			: Specify password for authentication.
+* Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
+* VSE Name			: Provide name of the VS Environment  in which you want to redeploy. Eg. VSE
+* MAR File Path 		: Provide full path to the MAR file which will be used for redeployment. E.g. C:\Test.mar
+* MAR File URI			: Provide URI to the MAR file which will be used for redeployment. E.g. file:///C:/CASV/Test.mar 
+* Sudo Password         	: The password for the sudo command.
+* Options              	 	: Run using sudo password (and sudo username if specified).
+* Sudo Username         	: The username to be used for the sudo command. 	
+* Overwrite Agent		: Overwrites the default agent
+* Overwrite Login		: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is 1 in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+(none)]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>
