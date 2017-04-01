@@ -38,7 +38,7 @@ public class RunModelArchiveAction extends AbstractHttpAction {
         if (this.async) {
             webResource = webResource.queryParam("async", "true");
         }
-
+        ConsoleWriter.writeln("Calling url " + webResource.getURI());
         // submit the request
         ClientResponse response = webResource.get(ClientResponse.class);
         prepareOutput(response);
