@@ -46,10 +46,8 @@ public class StopVSAction extends AbstractHttpAction {
                 .accept(Constants.START_STOP_VS_ACCEPT_TYPE).post(ClientResponse.class);
 
         JsonObject jObj = CommonUtil.readAndLog(response);
-        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {            
-            if (jObj != null) {
-                ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));
-            }
+        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {
+            ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));
             throw new AutomicException("Stop VS Operation failed");
         }
     }

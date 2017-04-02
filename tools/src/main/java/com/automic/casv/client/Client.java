@@ -45,9 +45,10 @@ public final class Client {
         } catch (Exception e) {
             ConsoleWriter.writeln(e);
             ConsoleWriter.writeln(CommonUtil.formatErrorMessage(ERRORMSG));
+        } finally {
+            ConsoleWriter.writeln("****** Execution ends with response code : " + responseCode);
+            ConsoleWriter.flush();
         }
-        ConsoleWriter.writeln("****** Execution ends with response code : " + responseCode);
-        ConsoleWriter.flush();
         System.exit(responseCode);
     }
 }

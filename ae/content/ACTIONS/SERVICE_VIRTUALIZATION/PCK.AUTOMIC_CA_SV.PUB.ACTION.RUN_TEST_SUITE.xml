@@ -324,11 +324,33 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
 
 = General description =
-This action runs a Test Suite on CA DevTest. You need to provide atleast the full file path to the Test Suite (.ste  file). You could also provide the Configuration file to be used when executing the test suite.
+This action runs the Test Suite. You need to provide atleast the full file path to the Test Suite (.ste  file). You could also provide the Configuration file to be used when executing the test suite.
 To run test cases asynchronously mark "Asynchronous call" field YES.
 
-Note:
-* The actions passes or fails based on the test result xml. Sample xml 
+All the specified file input(s) should be available on CA SV Server.
+
+If you are running test asynchronously, CallBack Id will also be printed in job report.
+
+* Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
+* * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
+
+= Inputs =
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Test Suite Path	: Provide full file path to the Test suite (.ste) file. E.g.  C:/MyTests/alltests.ste
+* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/alltests.config
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+= Return Value = 
+UC4RB_SV_TESTRESPONSE : Contains XML response of the test result. E.g.
 <?xml version="1.0" encoding="UTF-8"?>
 <invokeResult>
   <method name="RunSuite">
@@ -352,30 +374,6 @@ Note:
   </result>
 </invokeResult>
 
-* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
-* Element invokeResult.result.status is not part of test result for Asynchronous call.
-
-= Failure Conditions =
-none
-
-= Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Test Suite Path	: Provide full file path to the Test suite (.ste) file. E.g.  C:/MyTests/alltests.ste
-* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/alltests.config
-* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
-* Sudo Password         : The password for the sudo command.
-* Options               : Run using sudo password (and sudo username if specified).
-* Sudo Username         : The username to be used for the sudo command. 	
-* Overwrite Agent	: Overwrites the default agent
-* Overwrite Login	: Overwrites the default login
-
-= Behavior =
-(none)
-
-=Return Value=
-(none)
-
 = Outputs =
 * Return code is 0 in case of success.
 * Return code is non-zero in case of failure.
@@ -384,7 +382,7 @@ none
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 * To run Test Case synchronously

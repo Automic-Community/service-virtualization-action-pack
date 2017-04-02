@@ -137,11 +137,8 @@ public class CommonUtil {
     }
 
     public static final JsonObject readAndLog(ClientResponse cr) {
-        JsonObject obj = null;
-        if (cr.getLength() > 0) {
-            obj = CommonUtil.jsonObjectResponse(cr.getEntityInputStream());
-            CommonUtil.jsonPrettyPrinting(obj);
-        }
+        JsonObject obj = CommonUtil.jsonObjectResponse(cr.getEntityInputStream());
+        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(obj));
         return obj;
     }
 

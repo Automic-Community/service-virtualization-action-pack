@@ -63,7 +63,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 <UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
@@ -137,7 +136,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 <UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
@@ -197,7 +195,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 <UC4RB_SV_ASYNCs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_ASYNC#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE">NO</UC4RB_SV_ASYNCs.00>
 <UC4RB_SV_MAR_MARI_FILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_MARI_FILE#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.RUN_MODEL_ARCHIVE"/>
 </PRPTBOX>
@@ -324,10 +321,28 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
 
 = General description =
-This action runs a Mar or Mari file on CA DevTest. You need to provide atleast the full file path to the .mar or .mari  file. To run test cases asynchronously mark "Asynchronous call" field YES.
+This action runs the test using specified MAR or Mari file. This action also publishes the test result (XML format). Specified MAR/Mari File should be available on CA SV Server. 
+If you are running test asynchronously, CallBack Id will also be printed in job report.
 
-Note:
-* The actions passes or fails based on the test result xml. Sample xml 
+* Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
+* * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
+
+= Inputs =
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* MAR or MARI Path	: Provide full file path to the Mar or Mari file. E.g.  C:/MyTests/getrecord.mari
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+UC4RB_SV_TESTRESPONSE : Contains XML response of the test result. E.g.
 <?xml version="1.0" encoding="UTF-8"?>
 <invokeResult>
   <method name="RunMar">
@@ -350,29 +365,6 @@ Note:
   </result>
 </invokeResult>
 
-* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
-* Element invokeResult.result.status is not part of test result for Asynchronous call.
-
-= Failure Conditions =
-none
-
-= Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* MAR or MARI Path	: Provide full file path to the Mar or Mari file. E.g.  C:/MyTests/getrecord.mari
-* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
-* Sudo Password         : The password for the sudo command.
-* Options               : Run using sudo password (and sudo username if specified).
-* Sudo Username         : The username to be used for the sudo command. 	
-* Overwrite Agent	: Overwrites the default agent
-* Overwrite Login	: Overwrites the default login
-
-= Behavior =
-(none)
-
-=Return Value=
-(none)
-
 = Outputs =
 * Return code is 0 in case of success.
 * Return code is non-zero in case of failure.
@@ -381,7 +373,7 @@ none
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 * To run Test Case synchronously

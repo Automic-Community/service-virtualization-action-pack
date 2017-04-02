@@ -359,7 +359,7 @@ This action stops the specified Virtual Service. If Virtual Service is already s
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

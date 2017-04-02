@@ -9,19 +9,14 @@
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[About Automic's CA SV Package
 ================================
-CA Service Virtualization Accelerate application delivery, continuously improve quality and reduce time-to-market. With this package we automate the given business goal:
-* Start Virtual Service
-* Stop Virtual Service
-* Delete Virtual Service
-* Deploy Virtual Service
-* Redeploy Virtual Service
+CA Service Virtualization Accelerate application delivery, continuously improve quality and reduce time-to-market. With this package we automate the following:
+* Manage Virtual Service. E.g. Start/Stop/Deploy/Delete
+* Run Test Case/Test Suite and Model Archive
+* Compare Test Results
 
 
 =Supported CA SV versions=
 CA SV Version 10.0
-
-=Limitations=
-(none)
 
 =Setup=
 * Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
@@ -30,13 +25,13 @@ CA SV Version 10.0
 
 =Variables=
 PCK.AUTOMIC_CA_SV.PUB.VARA.PACKAGE_PARAMETERS
-* Connection timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
+* Connection timeout and read timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
 
 =Actions=
 Following actions are supported for CA SV.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE 
-* Action Description: This action starts Virtual Service.
+* Action Description: This action starts the specified Virtual Service.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE  
 * Action Description: This action stops the specified Virtual Service.
@@ -45,22 +40,22 @@ Following actions are supported for CA SV.
 * Action Description: This action deletes the specified Virtual Service.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE  
-* Action Description: This action deploy's the Virtual Service over VS Environment using MAR File Path or URI. 
+* Action Description: This action deploy's the Virtual Service over VS Environment using MAR File or MAR URI. 
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE  
-* Action Description: This action redeploy's the Virtual Service over VS Environment using MAR File Path or URI.
+* Action Description: This action redeploy's the Virtual Service over VS Environment using MAR File or MAR URI.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST
-* Action Description: This action runs individual Test Case on DevTest.
+* Action Description: This action runs test from the specified test file.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
-* Action Description: This action runs a Test Suite on DevTest.
+* Action Description: This action runs test from the specified Suite.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
-* Action Description: This action runs a Mar or Mari file on DevTest.
+* Action Description: This action runs test from the specified Mar or Mari file.
 
 * Action Name: PCK.AUTOMIC_CA_SV.PUB.ACTION.COMPARE_TEST_RESULTS
-* Action Description: This action compares two test results xml string.]]></DOC>
+* Action Description: This action compares two test results specified in XML format.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>

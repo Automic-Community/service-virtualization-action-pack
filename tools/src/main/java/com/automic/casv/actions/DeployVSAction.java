@@ -73,21 +73,17 @@ public class DeployVSAction extends AbstractHttpAction {
 
         JsonObject jObj = CommonUtil.readAndLog(response);
         if (!CommonUtil.isHttpStatusOK(response.getStatus())) {
-            if (reDeploy && jObj != null) {
-                String msg = jObj.getString("message");
-                if (msg != null && msg.contains(Constants.SERVICE_ALREADY_EXIST)) {
-                    ConsoleWriter.writeln("Deploy operation failed. Attempting to delete and deploy..");
-                    String serviceName = msg.replaceFirst("There is already a service with the name", "").trim();
-                    WebResource temp = getClient().path("VSEs").path(vseName).path(serviceName);
-                    ConsoleWriter.writeln("Calling url " + temp.getURI());
-                    temp.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
-                    reDeploy = false;
-                    executeSpecific();
-                } else {
-                    throw new AutomicException("ReDeploy Operation failed");
-                }
+            String msg = jObj.getString("message");
+            if (msg != null && msg.contains(Constants.SERVICE_ALREADY_EXIST)) {
+                ConsoleWriter.writeln("Deploy operation failed. Attempting to delete and deploy.");
+                String serviceName = msg.replaceFirst(Constants.SERVICE_ALREADY_EXIST, "").trim();
+                WebResource temp = getClient().path("VSEs").path(vseName).path(serviceName);
+                ConsoleWriter.writeln("Calling url " + temp.getURI());
+                temp.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+                reDeploy = false;
+                executeSpecific();
             } else {
-                throw new AutomicException("Redeploy operation failed");
+                throw new AutomicException("ReDeploy Operation failed");
             }
         }
     }

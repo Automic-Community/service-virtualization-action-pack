@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<VARA OVD_VRName="FREI" data_type="STATIC" name="PCK.AUTOMIC_CA_SV.PUB.VARA.EXTERNAL_MAPPING" replacementmode="2">
+<HEADER state="1">
+<Title>External mapping for Agent/Login</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType>STATIC</OH_SubType>
+</HEADER>
+<ATTR_VARA state="1">
+<Type>C|Text</Type>
+<lblSource>Static</lblSource>
+<source>STATIC</source>
+<VRName>FREI|Freely selected</VRName>
+<NotFoundErr>0</NotFoundErr>
+<NotFoundDef>1</NotFoundDef>
+<ShareN>0</ShareN>
+<ShareL>0</ShareL>
+<ShareR>0</ShareR>
+<MaxValue_C>1024</MaxValue_C>
+<CheckMax_C>0</CheckMax_C>
+<uppercase>0</uppercase>
+<sortColumn>0</sortColumn>
+<sortDirection>0</sortDirection>
+</ATTR_VARA>
+<VARA state="1">
+<Variables>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.COMPARE_TEST_RESULTS/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.COMPARE_TEST_RESULTS/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DELETE_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.START_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_SV.PUB.ACTION.STOP_VIRTUAL_SERVICE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+</Variables>
+</VARA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</VARA>
+</uc-export>

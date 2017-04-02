@@ -359,7 +359,7 @@ This action starts Virtual Service. Action succeeds if Virtual Service is alread
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

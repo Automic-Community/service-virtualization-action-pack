@@ -41,12 +41,10 @@ public class DeleteVSAction extends AbstractHttpAction {
         WebResource webResource = getClient().path("VSEs").path(vseName).path(vsName);
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
         ClientResponse response = webResource.header(Constants.IGNORE_HTTPERROR, "true")
-                .accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
-        JsonObject jObj = CommonUtil.readAndLog(response);
-        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {            
-            if (jObj != null) {
-                ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));
-            }
+                .accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);        
+        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {
+            JsonObject jObj = CommonUtil.readAndLog(response);
+            ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));            
             throw new AutomicException("Delete Operation failed");
         }
     }

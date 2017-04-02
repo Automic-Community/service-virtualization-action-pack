@@ -110,6 +110,7 @@
 : SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_SV_VS_EXIST#"
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
 
+
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.ATTACH_RESOURCE
 
@@ -148,19 +149,19 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[:IF &UC4RB_SV_VS_EXIST# EQ "NO"
-:  SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:  IF &STATUS# GT 0
-:      SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","*message*","COL=DELIMITER", 'DELIMITER=*:*')
-:      PROCESS &HND#
-:           SET &KEY# = GET_PROCESS_LINE(&HND#,1)
-:           SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:           SET &SEARCHSTRING#="Virtual service name is invalid"
-:           SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
-:             IF &POS# NE 0
-:                MODIFY_STATE RETCODE=0
-:                TERM_PROCESS
-:             ENDIF
+<OSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+:IF &STATUS# NE 0
+:  IF &UC4RB_SV_VS_EXIST# EQ "NO"
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","UC4RB_SV_RESPMSG::=*","COL=DELIMITER", 'DELIMITER=*::=*')
+:    PROCESS &HND#
+:       SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
+:       SET &SEARCHSTRING#="Virtual service name is invalid"
+:       SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
+:       IF &POS# NE 0
+:          MODIFY_STATE RETCODE=0
+:          PRINT "Specified Virtual Service does not exist."
+:          TERM_PROCESS
+:       ENDIF
 :    ENDPROCESS
 :    CLOSE_PROCESS &HND#
 :  ENDIF

@@ -1,5 +1,6 @@
 package com.automic.casv.entity;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -76,6 +77,7 @@ public class TestResult {
      * @throws AutomicException
      */
     public TestResult(String xmlResponse, boolean async) throws AutomicException {
+        ConsoleWriter.writeln(xmlResponse);
         this.async = async;
         try {
             InputSource source = new InputSource(new StringReader(xmlResponse));
@@ -83,9 +85,18 @@ public class TestResult {
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(source);
             parseXMLDocument(document);
+
+            BufferedReader br = new BufferedReader(new StringReader(xmlResponse));
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = br.readLine()) != null) {
+                sb.append(line.trim());
+            }
+            ConsoleWriter.writeln("UC4RB_SV_TEST_RESPONSE::=" + sb.toString());
+
         } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
             ConsoleWriter.writeln(ex);
-            throw new AutomicException(ex.getMessage());
+            throw new AutomicException("Malformed XML" + ex.getMessage());
         }
     }
 
@@ -96,14 +107,15 @@ public class TestResult {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(source);
+            ConsoleWriter.writeln("Parsing XML for file " + file.getName());
             parseXMLDocument(document);
         } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
             ConsoleWriter.writeln(ex);
-            throw new AutomicException(ex.getMessage());
+            throw new AutomicException("Malformed XML" + ex.getMessage());
         }
     }
 
-    private void parseXMLDocument(Document document) throws XPathExpressionException {
+    private void parseXMLDocument(Document document) throws XPathExpressionException, AutomicException {
         XPathFactory xpathFactory = XPathFactory.newInstance();
         XPath xpath = xpathFactory.newXPath();
 
@@ -113,11 +125,15 @@ public class TestResult {
                 callBackId = xpath.evaluate("/invokeResult/result/callbackKey", document);
             } else {
                 resultStatus = xpath.evaluate("/invokeResult/result/status", document);
-                passCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/pass/@count", document));
-                failCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/fail/@count", document));
-                abortCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/abort/@count", document));
-                warningCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/warning/@count", document));
-                errorCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/error/@count", document));
+                try {
+                    passCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/pass/@count", document));
+                    failCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/fail/@count", document));
+                    abortCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/abort/@count", document));
+                    warningCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/warning/@count", document));
+                    errorCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/error/@count", document));
+                } catch (NumberFormatException nfe) {
+                    throw new AutomicException("XML doesnot contain valid count for (pass/fail/abort/warning/error)");
+                }
             }
         }
     }

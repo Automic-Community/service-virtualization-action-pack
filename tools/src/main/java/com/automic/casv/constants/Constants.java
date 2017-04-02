@@ -17,16 +17,12 @@ public class Constants {
 
     public static final int HTTP_SUCCESS_START = 200;
     public static final int HTTP_SUCCESS_END = 299;
-    public static final int HTTP_NOT_FOUND = 404;
 
     public static final String BASE_URL = "baseurl";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "UC4_DECRYPTED_PWD";
     public static final String HTTPS = "https";
     public static final String SKIP_CERT_VALIDATION = "ssl";
-
-    public static final int MINUS_ONE = -1;
-    public static final int ZERO = 0;
 
     public static final String YES = "YES";
     public static final String TRUE = "TRUE";
@@ -37,7 +33,6 @@ public class Constants {
     public static final String SERVICE_ALREADY_EXIST = "There is already a service with the name";
 
     public static final String TEST_XML = "testXML";
-
     public static final String BASELINE_XML = "baselineXML";
 
     public static final String IGNORE_HTTPERROR = "IgnoreError";

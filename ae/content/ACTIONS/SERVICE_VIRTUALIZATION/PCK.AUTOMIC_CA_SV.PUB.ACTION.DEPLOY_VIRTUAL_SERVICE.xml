@@ -65,9 +65,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -141,9 +141,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -203,9 +203,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.DEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -330,11 +330,12 @@
  PCK.AUTOMIC_CA_SV.PUB.ACTION.DEPLOY_VIRTUAL_SERVICE
 
 = General description =
-This action deploy's the Virtual Service over VS Environment using MAR File Path or URI. 
+This action deploys the specified Virtual Service over VS Environment using MAR File Path or MAR URI.
+If you are deploying using MAR File option, then MAR file should be available on Agent OS. 
+If you are deploying using MAR URI option, then MAR URI should be accessible from CA SV Server.
 
 = Failure Conditions =
-* Action Fails if both or none of inputs are provided i.e MAR File Path or MAR File URI.
-* Action fails if VS is already deployed.
+* Action fails if Virtual Service is already deployed.
 
 = Inputs =
 * API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
@@ -342,8 +343,10 @@ This action deploy's the Virtual Service over VS Environment using MAR File Path
 * Password			: Specify password for authentication.
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
 * VSE Name			: Provide name of the VS Environment in which VS is present. Eg. VSE
-* MAR File Path 		: Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar
-* MAR File URI			: Provide URI to the MAR file which will be used for deployment. E.g. file:///C:/CASV/Test.mar 
+* Deploy Option 		: Select the deploy option that you want to use.
+* MAR Location			: Provide MAR File or MAR URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
+If you specify deploy option as File, MAR location will considered as MAR File.
+If you specify deploy option as URI, MAR location will considered as MAR URI.
 * Sudo Password         	: The password for the sudo command.
 * Options              	 	: Run using sudo password (and sudo username if specified).
 * Sudo Username         	: The username to be used for the sudo command. 	

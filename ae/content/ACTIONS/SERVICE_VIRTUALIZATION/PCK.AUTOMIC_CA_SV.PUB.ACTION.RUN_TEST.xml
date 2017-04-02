@@ -330,11 +330,36 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST 
 
 = General description =
-This action runs individual Test Case on DevTest. You need to provide atleast the full file path to the Test Case document(.tst file). Other options that you can provide are staging document, configuration file and coordinator server name.
+This action runs individual Test Case You need to provide atleast the full file path to the Test Case document(.tst file). Other options that you can provide are staging document, configuration file and coordinator server name.
+
+All the specified file input(s) should be available on CA SV Server.
+
 To run test cases asynchronously mark "Asynchronous call" field YES.
 
-Note:
-* The actions passes or fails based on the test result xml. Sample xml 
+If you are running test asynchronously, CallBack Id will also be printed in job report.
+
+* Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
+* * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
+
+= Inputs =
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Test Case Path	: Provide full file path to the Test Case file (.tst). This test case file should exist inside a Project. E.g. C:/MyTests/getrecord.tst
+* Staging Doc Path	: Provide full file path to the staging doc. E.g. Eg. C:/MyTests/getrecord.stg
+* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/getrecord.config
+* Coordinator server	: Name of Coordinator server. E.g. Coordinator
+* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+= Return Value =
+UC4RB_SV_TESTRESPONSE : Contains XML response of the test result. E.g.
 <?xml version="1.0" encoding="UTF-8"?>
 <invokeResult>
   <method name="RunTest">
@@ -359,32 +384,6 @@ Note:
   </result>
 </invokeResult>
 
-* Action passes if invokeResult.status is OK and invokeResult.result.status is ENDED.
-* Element invokeResult.result.status is not part of test result for Asynchronous call.
-
-= Failure Conditions =
-none
-
-= Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Test Case Path	: Provide full file path to the Test Case file (.tst). This test case file should exist inside a Project. E.g. C:/MyTests/getrecord.tst
-* Staging Doc Path	: Provide full file path to the staging doc. E.g. Eg. C:/MyTests/getrecord.stg
-* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/getrecord.config
-* Coordinator server	: Name of Coordinator server. E.g. Coordinator
-* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
-* Sudo Password         : The password for the sudo command.
-* Options               : Run using sudo password (and sudo username if specified).
-* Sudo Username         : The username to be used for the sudo command. 	
-* Overwrite Agent	: Overwrites the default agent
-* Overwrite Login	: Overwrites the default login
-
-= Behavior =
-(none)
-
-=Return Value=
-(none)
-
 = Outputs =
 * Return code is 0 in case of success.
 * Return code is non-zero in case of failure.
@@ -393,7 +392,7 @@ none
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 * To run Test Case synchronously

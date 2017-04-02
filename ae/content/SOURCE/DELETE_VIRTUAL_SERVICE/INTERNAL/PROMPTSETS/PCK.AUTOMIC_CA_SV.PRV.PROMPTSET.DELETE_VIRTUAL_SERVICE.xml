@@ -66,17 +66,17 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_SV_VS_EXISTs.00" nl="1" text="Fail if VS is not exist" tooltip="Action fails if VS cannot be found." required="0">
+    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_SV_VS_EXISTs.00" nl="1" text="Fail if VS does not exist" tooltip="This action will not fail, if Virual Service does not exist and you have specified No." required="0">
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
-        <entry name="text">Fail if VS is not exist</entry>
+        <entry name="text">Fail if VS does not exist</entry>
         <entry name="quotes"/>
         <entry name="id">UC4RB_SV_VS_EXISTs.00</entry>
         <entry name="enabled">0</entry>
         <entry name="focus">0</entry>
-        <entry name="tooltip">Action fails if VS cannot be found.</entry>
+        <entry name="tooltip">This action will not fail, if Virual Service does not exist and you have specified No.</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
       <entry name="initvalue"/>

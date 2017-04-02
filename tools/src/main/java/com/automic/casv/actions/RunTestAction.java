@@ -95,7 +95,6 @@ public class RunTestAction extends AbstractHttpAction {
     // get test result and print in the job report whether test passed or not
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
-        ConsoleWriter.writeln("UC4RB_SV_TEST_RESPONSE::=" + xmlResponse);
         TestResult testResult = new TestResult(xmlResponse, this.async);
         if (!testResult.isTestSucceeded()) {
             throw new AutomicException("Run Test operation failed.");

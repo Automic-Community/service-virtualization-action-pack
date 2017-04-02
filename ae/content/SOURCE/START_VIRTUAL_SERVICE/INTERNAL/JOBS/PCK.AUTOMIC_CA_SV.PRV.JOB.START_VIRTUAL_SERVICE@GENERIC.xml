@@ -143,19 +143,19 @@
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
 <OSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:IF &STATUS# GT 0
-:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","*message*","COL=DELIMITER", 'DELIMITER=*:*')
+:IF &STATUS# NE 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","UC4RB_SV_RESPMSG::=*","COL=DELIMITER", 'DELIMITER=*::=*')
 :    PROCESS &HND#
-:         SET &KEY# = GET_PROCESS_LINE(&HND#,1)
-:         SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:           SET &SEARCHSTRING#="virtual service is already running"
-:           SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
-:           IF &POS# NE 0
-:              MODIFY_STATE RETCODE=0
-:              TERM_PROCESS
-:           ENDIF
-:  ENDPROCESS
-:  CLOSE_PROCESS &HND#
+:       SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
+:       SET &SEARCHSTRING#="virtual service is already running"
+:       SET &POS#=STR_FIND(&VALUE#,&SEARCHSTRING#)
+:       IF &POS# NE 0
+:          MODIFY_STATE RETCODE=0
+:          PRINT "Virtual Service is already in running state."
+:          TERM_PROCESS
+:       ENDIF
+:    ENDPROCESS
+:    CLOSE_PROCESS &HND#
 :ENDIF]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">

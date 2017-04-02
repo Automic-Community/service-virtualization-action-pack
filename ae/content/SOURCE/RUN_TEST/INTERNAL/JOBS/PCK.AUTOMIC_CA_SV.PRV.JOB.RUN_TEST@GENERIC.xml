@@ -164,24 +164,7 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[: SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-
-: IF &STATUS# EQ 0
-:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP","UC4RB_SV*","COL=DELIMITER", 'DELIMITER=*::=*')
-:    PROCESS &HND#
-:      SET &KEY# = GET_PROCESS_LINE(&HND#,1)
-:      SET &VALUE# = GET_PROCESS_LINE(&HND#,2)
-:      IF &KEY# = "UC4RB_SV_TEST_RESULT"
-:          IF &VALUE# NE "true"
-:              MODIFY_STATE RETCODE=51
-:              MODIFY_STATE STATUS_TEXT="Error in running the test"
-:              TERM_PROCESS
-:          ENDIF
-:      ENDIF
-:    ENDPROCESS
-:    CLOSE_PROCESS &HND#
-: ENDIF
-]]></OSCRI>
+<OSCRI><![CDATA[:INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.PUBLISH_TESTRESULT]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>

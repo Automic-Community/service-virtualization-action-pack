@@ -65,8 +65,8 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
@@ -141,8 +141,8 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
@@ -203,8 +203,8 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_MAR_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_PATH#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
-<UC4RB_SV_MAR_URIs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR_URI#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
+<UC4RB_SV_DEPLOYOPTION ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTION>
+<UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
 </PROMPTSET>
@@ -330,10 +330,10 @@
  PCK.AUTOMIC_CA_SV.PUB.ACTION.REDEPLOY_VIRTUAL_SERVICE
 
 = General description =
-This action redeploys the Virtual Service over VS Environment using MAR File Path or URI. If any deployment already exists, it will remove existing virtual service and deploys virtual service again.
+This action redeploys the Virtual Service over VS Environment using MAR File or MAR URI. If  deployment already exists, it will remove the existing virtual service and deploys virtual service again.
 
-= Failure Conditions =
-* Action Fails if both or none of inputs are provided i.e MAR File Path or MAR File URI.
+If you are redeploying using MAR File option, then MAR file should be available on Agent OS. 
+If you are redeploying using MAR URI option, then MAR URI should be accessible from CA SV Server.
 
 = Inputs =
 * API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
@@ -341,8 +341,10 @@ This action redeploys the Virtual Service over VS Environment using MAR File Pat
 * Password			: Specify password for authentication.
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
 * VSE Name			: Provide name of the VS Environment  in which you want to redeploy. Eg. VSE
-* MAR File Path 		: Provide full path to the MAR file which will be used for redeployment. E.g. C:\Test.mar
-* MAR File URI			: Provide URI to the MAR file which will be used for redeployment. E.g. file:///C:/CASV/Test.mar 
+* Deploy Option 		: Select the deploy option that you want to use.
+* MAR Location			: Provide MAR File or MAR URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
+If you specify deploy option as File, MAR location will considered as MAR File.
+If you specify deploy option as URI, MAR location will considered as MAR URI.
 * Sudo Password         	: The password for the sudo command.
 * Options              	 	: Run using sudo password (and sudo username if specified).
 * Sudo Username         	: The username to be used for the sudo command. 	
@@ -363,7 +365,7 @@ This action redeploys the Virtual Service over VS Environment using MAR File Pat
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

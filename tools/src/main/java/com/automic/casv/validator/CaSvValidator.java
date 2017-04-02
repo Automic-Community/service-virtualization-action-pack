@@ -21,21 +21,7 @@ public final class CaSvValidator {
             throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameterName,
                     parameter));
         }
-    }
-
-    public static final void checkNotNull(Object parameter, String parameterName) throws AutomicException {
-        if (parameter != null) {
-            throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameterName,
-                    parameter));
-        }
-    }
-
-    public static void lessThan(int value, int lessThan, String parameterName) throws AutomicException {
-        if (value < lessThan) {
-            String errMsg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameterName, value);
-            throw new AutomicException(errMsg);
-        }
-    }
+    }   
 
     public static void checkFileExists(File file, String parameterName) throws AutomicException {
         if (!(file.exists() && file.isFile())) {

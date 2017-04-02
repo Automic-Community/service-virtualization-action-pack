@@ -38,56 +38,43 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SV_MAR_PATHs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="MAR File Path" tooltip="Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
-         
+    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_SV_DEPLOYOPTIONs.00" nl="1" text="Deploy Option" tooltip="Select URI, if you want to deploy virtual serrvice using MAR URI." required="0">
       <properties>
-        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry listparam="C,N" name="reference" reftype="STATIC">PCK.AUTOMIC_CA_SV.PRV.VARA.DEPLOYOPTIONS</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
-        <entry name="text">MAR File Path</entry>
-        <entry name="multiline">0</entry>
-        <entry name="multilineIcon">0</entry>
-        <entry name="multiselect">0</entry>
-        <entry name="separator">;</entry>
-        <entry name="len"/>
+        <entry name="text">Deploy Option</entry>
         <entry name="quotes"/>
-        <entry name="id">UC4RB_SV_MAR_PATHs.00</entry>
-        <entry name="regex"/>
-        <entry name="inputassistance">0</entry>
+        <entry name="id">UC4RB_SV_DEPLOYOPTIONs.00</entry>
         <entry name="enabled">0</entry>
-        <entry name="required">0</entry>
-        <entry name="upper">0</entry>
         <entry name="focus">0</entry>
-        <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide full path to the MAR file which will be used for deployment. E.g. C:\Test.mar</entry>
+        <entry name="tooltip">Select URI, if you want to deploy virtual serrvice using MAR URI.</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
-        <entry name="onchangereset"/>
-        <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SV_MAR_URIs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="MAR File URI" tooltip="Provide URI to the MAR file which will be used for deployment. E.g. file:///C:/CASV/Test.mar " upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </dynradiogroup><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SV_MARs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="MAR Location" tooltip="Specify MAR File or MAR URI for deployment. E.g. C:\Test.mar" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
-        <entry name="text">MAR File URI</entry>
+        <entry name="text">MAR Location</entry>
         <entry name="multiline">0</entry>
         <entry name="multilineIcon">0</entry>
         <entry name="multiselect">0</entry>
         <entry name="separator">;</entry>
         <entry name="len"/>
         <entry name="quotes"/>
-        <entry name="id">UC4RB_SV_MAR_URIs.00</entry>
+        <entry name="id">UC4RB_SV_MARs.00</entry>
         <entry name="regex"/>
         <entry name="inputassistance">0</entry>
         <entry name="enabled">0</entry>
-        <entry name="required">0</entry>
+        <entry name="required">1</entry>
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide URI to the MAR file which will be used for deployment. E.g. file:///C:/CASV/Test.mar </entry>
+        <entry name="tooltip">Specify MAR File or MAR URI for deployment. E.g. C:\Test.mar</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
@@ -97,7 +84,7 @@
     </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE">VSE</UC4RB_SV_VS_ENVs.00><UC4RB_SV_MAR_PATHs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_PATH#" ReadFromTable="OPSE"></UC4RB_SV_MAR_PATHs.00><UC4RB_SV_MAR_URIs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR_URI#" ReadFromTable="OPSE"></UC4RB_SV_MAR_URIs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_SV_VS_ENVs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_VS_ENV#" ReadFromTable="OPSE">VSE</UC4RB_SV_VS_ENVs.00><UC4RB_SV_DEPLOYOPTIONs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_DEPLOYOPTION#" ReadFromTable="OPSE">FILE</UC4RB_SV_DEPLOYOPTIONs.00><UC4RB_SV_MARs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SV_MAR#" ReadFromTable="OPSE"></UC4RB_SV_MARs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

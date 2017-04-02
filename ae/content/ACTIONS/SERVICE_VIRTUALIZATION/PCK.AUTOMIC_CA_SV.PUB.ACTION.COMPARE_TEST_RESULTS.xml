@@ -60,6 +60,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
@@ -116,6 +125,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
@@ -139,9 +157,22 @@
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_TMP_DIR#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_SV_TMPBASEXML#" vname="XC_P03"/>
 </param>
 <param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
+</params>
+</action>
+<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
+<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P03" type="V" value="##911010">
+<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
+<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_SV_TMPTESTXML#" vname="XC_P03"/>
+</param>
+<param altview="0" name="XC_P04" type="V" value="DEL_FILE"/>
 </params>
 </action>
 </conditions>
@@ -169,6 +200,15 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS">
 <UC4RB_SV_BASELINE_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_BASELINE_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
 <UC4RB_SV_TEST_XMLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_TEST_XML#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -240,6 +280,11 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.COMPARE_TEST_RESULTS" prptmode="1"/>
 </PROMPTSET>
 </node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" prptmode="1"/>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PRPTS" type="PROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" ontop="1">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" prptmode="1">
@@ -301,8 +346,8 @@ Note:
 = Behavior =
 (none)
 
-=Return Value=
-UC4RB_SV_ARE_RESULTS_EQUAL : Either true or false
+= Return Value =
+UC4RB_SV_COMPARE_RESULT : TRUE or FALSE
 
 = Outputs =
 * Return code is 0 in case of success.
@@ -312,7 +357,7 @@ UC4RB_SV_ARE_RESULTS_EQUAL : Either true or false
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+logs will be displayed in the AE report.
 
 = Example =
 Sample baseline/test xml string
@@ -332,7 +377,7 @@ Sample baseline/test xml string
     <result>
         <status>ENDED</status>
         <reportUrl>
-            <![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=534222F1147D11E7BAEA005056BD12C1]]]><![CDATA[]>
+<![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=534222F1147D11E7BAEA005056BD12C1]]]><![CDATA[]>
         </reportUrl>
         <runId>534222F1147D11E7BAEA005056BD12C1</runId>
         <pass count="1" />

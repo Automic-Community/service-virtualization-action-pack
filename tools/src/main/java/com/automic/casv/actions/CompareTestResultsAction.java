@@ -32,7 +32,8 @@ public class CompareTestResultsAction extends AbstractAction {
         TestResult otherTestResult = new TestResult(testXML);
         ConsoleWriter.writeln("Baseline XML - " + baselineTestResult);
         ConsoleWriter.writeln("Test XML " + otherTestResult);
-        ConsoleWriter.writeln("UC4RB_SV_ARE_RESULTS_EQUAL ::=" + baselineTestResult.equals(otherTestResult));
+        ConsoleWriter.writeln("UC4RB_SV_COMPARE_RESULT::="
+                + Boolean.toString(baselineTestResult.equals(otherTestResult)).toUpperCase());
     }
 
     private void prepareInputs() throws AutomicException {
