@@ -1,10 +1,5 @@
 package com.automic.casv.filter;
 
-import java.util.List;
-
-import javax.json.JsonObject;
-import javax.ws.rs.core.MultivaluedMap;
-
 import com.automic.casv.constants.Constants;
 import com.automic.casv.exception.AutomicRuntimeException;
 import com.automic.casv.util.CommonUtil;
@@ -25,7 +20,7 @@ public class GenericResponseFilter extends ClientFilter {
 
     @Override
     public ClientResponse handle(ClientRequest request) {
-        boolean ignoreHttpError = (request.getHeaders().remove(Constants.IGNORE_DEPLOY_FAILURE) != null);
+        boolean ignoreHttpError = (request.getHeaders().remove(Constants.IGNORE_HTTPERROR) != null);
         ClientResponse response = getNext().handle(request);
         String msg = null;
         if (response.getClientResponseStatus() != null
@@ -38,32 +33,10 @@ public class GenericResponseFilter extends ClientFilter {
 
         // printing response code and message on console
         ConsoleWriter.writeln(msg);
-        // Redeploy service when package already deployed
-        if (ignoreHttpError && response.getStatus() == Constants.HTTP_NOT_FOUND) {
-            return response;
+        if (!ignoreHttpError && !CommonUtil.isHttpStatusOK(response.getStatus())) {
+            ConsoleWriter.writeln(response.getEntity(String.class));
+            throw new AutomicRuntimeException("Requested Operation failed");
         }
-        // print json or xml depending on its content-type
-        MultivaluedMap<String, String> responseHeaders = response.getHeaders();
-        List<String> contentType = responseHeaders.get("Content-Type");
-        List<String> contenLength = responseHeaders.get("Content-Length");
-
-        if (contentType != null) {
-            if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
-                if (contentType.get(0).toLowerCase().contains("json")) {
-                    JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-                    ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
-                } else if (contentType.get(0).toLowerCase().contains("xml")) {
-                    ConsoleWriter.writeln(response.getEntity(String.class));
-                }
-
-                String responseMsg = response.getEntity(String.class);
-                throw new AutomicRuntimeException(responseMsg);
-            }
-        } else if (!(contenLength != null && Integer.parseInt(contenLength.get(0)) > 0)) {
-            String responseMsg = "Failed to process the request";
-            throw new AutomicRuntimeException(responseMsg);
-        }
-
         return response;
     }
 }

@@ -22,6 +22,7 @@ public class RunModelArchiveAction extends AbstractHttpAction {
     private boolean async;
 
     public RunModelArchiveAction() {
+        super(false);
         addOption("marormari", true, "Mar or Mari Path");
         addOption("async", false, "Asynchronous call");
     }
@@ -52,16 +53,17 @@ public class RunModelArchiveAction extends AbstractHttpAction {
 
         // get async option from commandline
         this.async = CommonUtil.convert2Bool(getOptionValue("async"));
-
     }
 
     // get test result and print in the job report whether test passed or not
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
-        ConsoleWriter.writeln(xmlResponse);
-        TestResult testResult = TestResult.getInstance(xmlResponse, this.async);
-
-        ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
-
+        ConsoleWriter.writeln("UC4RB_SV_TEST_RESPONSE::=" + xmlResponse);
+        TestResult testResult = new TestResult(xmlResponse, this.async);
+        if (!testResult.isTestSucceeded()) {
+            throw new AutomicException("Run Model Archive operation failed.");
+        } else {
+            testResult.logInfo();
+        }
     }
 }

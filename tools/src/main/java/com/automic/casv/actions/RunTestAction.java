@@ -33,6 +33,7 @@ public class RunTestAction extends AbstractHttpAction {
     private String coordinator;
 
     public RunTestAction() {
+        super(false);
         addOption("testcasefile", true, "Test Case Path");
         addOption("stagingdoc", false, "Staging Doc Path");
         addOption("config", false, "Config Path");
@@ -94,11 +95,12 @@ public class RunTestAction extends AbstractHttpAction {
     // get test result and print in the job report whether test passed or not
     private void prepareOutput(ClientResponse response) throws AutomicException {
         String xmlResponse = response.getEntity(String.class);
-        ConsoleWriter.writeln(xmlResponse);
-        TestResult testResult = TestResult.getInstance(xmlResponse, this.async);
-
-        ConsoleWriter.writeln("UC4RB_SV_TEST_RESULT::=" + testResult.isTestPassed());
-
+        ConsoleWriter.writeln("UC4RB_SV_TEST_RESPONSE::=" + xmlResponse);
+        TestResult testResult = new TestResult(xmlResponse, this.async);
+        if (!testResult.isTestSucceeded()) {
+            throw new AutomicException("Run Test operation failed.");
+        } else {
+            testResult.logInfo();
+        }
     }
-
 }

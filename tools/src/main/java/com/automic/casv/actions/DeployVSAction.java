@@ -38,10 +38,14 @@ public class DeployVSAction extends AbstractHttpAction {
      */
     private String marURI;
 
+    private boolean reDeploy;
+
     public DeployVSAction() {
+        super(true);
         addOption("vsename", true, "VSE Name");
-        addOption("marfile", false, "MAR File Path");
-        addOption("maruri", false, "MAR File URI");
+        addOption("mar", true, "MAR");
+        addOption("deployoption", true, "Deploy Option (File | Uri)");
+        addOption("redeploy", false, "Redeploy (True | False)");
     }
 
     @Override
@@ -59,12 +63,33 @@ public class DeployVSAction extends AbstractHttpAction {
             part.field("fileURI", marURI);
         }
 
-        ClientResponse response = webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).type(part.getMediaType())
+        WebResource.Builder builder = webResource.getRequestBuilder();
+        if (reDeploy) {
+            builder = builder.header(Constants.IGNORE_HTTPERROR, "true");
+        }
+
+        ClientResponse response = builder.accept(Constants.START_STOP_VS_ACCEPT_TYPE).type(part.getMediaType())
                 .post(ClientResponse.class, part);
 
-        // print response on console
-        JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
+        JsonObject jObj = CommonUtil.readAndLog(response);
+        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {
+            if (reDeploy && jObj != null) {
+                String msg = jObj.getString("message");
+                if (msg != null && msg.contains(Constants.SERVICE_ALREADY_EXIST)) {
+                    ConsoleWriter.writeln("Deploy operation failed. Attempting to delete and deploy..");
+                    String serviceName = msg.replaceFirst("There is already a service with the name", "").trim();
+                    WebResource temp = getClient().path("VSEs").path(vseName).path(serviceName);
+                    ConsoleWriter.writeln("Calling url " + temp.getURI());
+                    temp.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+                    reDeploy = false;
+                    executeSpecific();
+                } else {
+                    throw new AutomicException("ReDeploy Operation failed");
+                }
+            } else {
+                throw new AutomicException("Redeploy operation failed");
+            }
+        }
     }
 
     /**
@@ -76,13 +101,22 @@ public class DeployVSAction extends AbstractHttpAction {
         vseName = getOptionValue("vsename");
         CaSvValidator.checkNotEmpty(vseName, "VSE Name");
 
-        String temp = getOptionValue("marfile");
-        if (CommonUtil.checkNotEmpty(temp)) {
+        String temp = getOptionValue("mar");
+        CaSvValidator.checkNotEmpty(temp, "MAR");
+
+        String deployOption = getOptionValue("deployoption");
+        CaSvValidator.checkNotEmpty(deployOption, "Deploy Option (File | Uri)");
+
+        if ("File".equalsIgnoreCase(deployOption)) {
             marFile = new File(temp);
-            CaSvValidator.checkFileExists(marFile, "Artifact File Path");
+            CaSvValidator.checkFileExists(marFile, "MAR File Path");
+        } else if ("Uri".equalsIgnoreCase(deployOption)) {
+            marURI = temp;
+        } else {
+            throw new AutomicException("Invalid Deploy option.");
         }
 
-        marURI = getOptionValue("maruri");
+        reDeploy = CommonUtil.convert2Bool(getOptionValue("redeploy"));
     }
 
 }

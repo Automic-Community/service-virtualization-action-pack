@@ -1,8 +1,11 @@
 package com.automic.casv.actions;
 
+import javax.json.JsonObject;
 import javax.ws.rs.core.MediaType;
 
+import com.automic.casv.constants.Constants;
 import com.automic.casv.exception.AutomicException;
+import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 import com.automic.casv.validator.CaSvValidator;
 import com.sun.jersey.api.client.ClientResponse;
@@ -27,6 +30,7 @@ public class DeleteVSAction extends AbstractHttpAction {
     private String vsName;
 
     public DeleteVSAction() {
+        super(true);
         addOption("vsename", true, "VSE Name");
         addOption("vsname", true, "Virtual Service Name");
     }
@@ -36,7 +40,15 @@ public class DeleteVSAction extends AbstractHttpAction {
         prepareInputs();
         WebResource webResource = getClient().path("VSEs").path(vseName).path(vsName);
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
-        webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+        ClientResponse response = webResource.header(Constants.IGNORE_HTTPERROR, "true")
+                .accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+        JsonObject jObj = CommonUtil.readAndLog(response);
+        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {            
+            if (jObj != null) {
+                ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));
+            }
+            throw new AutomicException("Delete Operation failed");
+        }
     }
 
     /**
@@ -50,7 +62,6 @@ public class DeleteVSAction extends AbstractHttpAction {
 
         vsName = getOptionValue("vsname");
         CaSvValidator.checkNotEmpty(vsName, "Virtual Service Name");
-
     }
 
 }

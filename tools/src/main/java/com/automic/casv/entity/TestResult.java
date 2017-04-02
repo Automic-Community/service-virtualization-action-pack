@@ -9,18 +9,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import com.automic.casv.exception.AutomicException;
-import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
 
 /**
@@ -32,72 +28,17 @@ import com.automic.casv.util.ConsoleWriter;
  */
 public class TestResult {
 
-    private String status;
+    private String invokeStatus;
 
     private String resultStatus;
+    private int passCount;
+    private int failCount;
+    private int abortCount;
+    private int warningCount;
+    private int errorCount;
 
-    private Integer resultPass;
-    private Integer resultFail;
-    private Integer resultAbort;
-    private Integer resultWarning;
-    private Integer resultError;
-
-    private TestResult(String status, String resultStatus, Integer resultPass, Integer resultFail, Integer resultAbort,
-            Integer resultWarning, Integer resultError) {
-        this.status = status;
-        this.resultStatus = resultStatus;
-        this.resultPass = resultPass;
-        this.resultFail = resultFail;
-        this.resultAbort = resultAbort;
-        this.resultWarning = resultWarning;
-        this.resultError = resultError;
-    }
-
-    private TestResult(String status, String resultStatus) {
-        this(status, resultStatus, null, null, null, null, null);
-    }
-
-    public static TestResult getInstance(File file) throws AutomicException {
-        try {
-            InputSource source = new InputSource(new FileInputStream(file));
-
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse(source);
-
-            XPathFactory xpathFactory = XPathFactory.newInstance();
-            XPath xpath = xpathFactory.newXPath();
-
-            String status = xpath.evaluate("/invokeResult/status", document);
-            String resultStatus = xpath.evaluate("/invokeResult/result/status", document);
-            Integer resultPass = new Integer(xpath.evaluate("/invokeResult/result/pass/@count", document));
-            Integer resultFail = new Integer(xpath.evaluate("/invokeResult/result/fail/@count", document));
-            Integer resultAbort = new Integer(xpath.evaluate("/invokeResult/result/abort/@count", document));
-            Integer resultWarning = new Integer(xpath.evaluate("/invokeResult/result/warning/@count", document));
-            Integer resultError = new Integer(xpath.evaluate("/invokeResult/result/error/@count", document));
-
-            return new TestResult(status, resultStatus, resultPass, resultFail, resultAbort, resultWarning, resultError);
-
-        } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
-            ConsoleWriter.writeln(ex);
-            throw new AutomicException(ex.getMessage());
-        }
-
-    }
-
-    /**
-     * return if Test Result have passed or not
-     * 
-     * @return true if test passed else false
-     */
-    public boolean isTestPassed() {
-        if (!"OK".equals(this.status)
-                || (CommonUtil.checkNotEmpty(this.resultStatus) && !"ENDED".equals(this.resultStatus))) {
-            return false;
-        }
-
-        return true;
-    }
+    private boolean async;
+    private String callBackId;
 
     /**
      * This method converts an XML response String to instance of {@link TestResult}. A sample response xml is of format
@@ -134,93 +75,139 @@ public class TestResult {
      * @return an instance
      * @throws AutomicException
      */
-    public static TestResult getInstance(String xmlResponse, boolean async) throws AutomicException {
+    public TestResult(String xmlResponse, boolean async) throws AutomicException {
+        this.async = async;
         try {
             InputSource source = new InputSource(new StringReader(xmlResponse));
-            String status = null;
-            String resultStatus = null;
-
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(source);
-
-            XPathFactory xpathFactory = XPathFactory.newInstance();
-            XPath xpath = xpathFactory.newXPath();
-            XPathExpression resultExpr = xpath.compile("/invokeResult");
-            Node invokeResultNode = (Node) resultExpr.evaluate(document, XPathConstants.NODE);
-            if (invokeResultNode != null) {
-                XPathExpression statusExpr = xpath.compile("./status");
-                status = (String) statusExpr.evaluate(invokeResultNode, XPathConstants.STRING);
-                if ("OK".equals(status) & !async) {
-                    XPathExpression resultStatusExpr = xpath.compile("./result/status");
-                    resultStatus = (String) resultStatusExpr.evaluate(invokeResultNode, XPathConstants.STRING);
-                }
-            }
-
-            return new TestResult(status, resultStatus);
-
+            parseXMLDocument(document);
         } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
             ConsoleWriter.writeln(ex);
             throw new AutomicException(ex.getMessage());
         }
+    }
 
+    public TestResult(File file) throws AutomicException {
+        try {
+            InputSource source = new InputSource(new FileInputStream(file));
+
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(source);
+            parseXMLDocument(document);
+        } catch (IOException | ParserConfigurationException | SAXException | XPathExpressionException ex) {
+            ConsoleWriter.writeln(ex);
+            throw new AutomicException(ex.getMessage());
+        }
+    }
+
+    private void parseXMLDocument(Document document) throws XPathExpressionException {
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        XPath xpath = xpathFactory.newXPath();
+
+        invokeStatus = xpath.evaluate("/invokeResult/status", document);
+        if ("OK".equalsIgnoreCase(invokeStatus)) {
+            if (async) {
+                callBackId = xpath.evaluate("/invokeResult/result/callbackKey", document);
+            } else {
+                resultStatus = xpath.evaluate("/invokeResult/result/status", document);
+                passCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/pass/@count", document));
+                failCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/fail/@count", document));
+                abortCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/abort/@count", document));
+                warningCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/warning/@count", document));
+                errorCount = Integer.parseInt(xpath.evaluate("/invokeResult/result/error/@count", document));
+            }
+        }
+    }
+
+    /**
+     * return if Test Result have passed or not
+     * 
+     * @return true if test passed else false
+     */
+    public boolean isTestSucceeded() {
+        boolean isSuccess = false;
+        if ("OK".equalsIgnoreCase(this.invokeStatus)) {
+            if (async) {
+                isSuccess = true;
+            } else {
+                isSuccess = "ENDED".equalsIgnoreCase(this.resultStatus);
+            }
+        }
+        return isSuccess;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
+        if (obj == null || !(obj instanceof TestResult) || async) {
             return false;
         }
 
-        TestResult anotherObj = (TestResult) obj;
-        if (!(this.status.equals("OK") && (this.status.equals(anotherObj.status)))) {
-            return false;
+        TestResult other = (TestResult) obj;
+
+        return ("OK".equalsIgnoreCase(invokeStatus)) && (async == other.async)
+                && (this.invokeStatus.equals(other.getInvokeStatus()))
+                && (resultStatus.equals(other.getResultStatus())) && (passCount == other.getPassCount())
+                && (failCount == other.getFailCount()) && (warningCount == other.getWarningCount())
+                && (errorCount == other.getAbortCount()) && (abortCount == other.getAbortCount());
+    }
+
+    public String getInvokeStatus() {
+        return invokeStatus;
+    }
+
+    public String getResultStatus() {
+        return resultStatus;
+    }
+
+    public int getPassCount() {
+        return passCount;
+    }
+
+    public int getFailCount() {
+        return failCount;
+    }
+
+    public int getAbortCount() {
+        return abortCount;
+    }
+
+    public int getWarningCount() {
+        return warningCount;
+    }
+
+    public int getErrorCount() {
+        return errorCount;
+    }
+
+    public String getCallBackId() {
+        return callBackId;
+    }
+
+    public void logInfo() {
+        if (callBackId != null) {
+            ConsoleWriter.writeln("UC4RB_SV_TEST_CALLBACK::=" + callBackId);
+        } else {
+            ConsoleWriter.writeln("UC4RB_SV_TEST_PASSCOUNT::=" + passCount);
+            ConsoleWriter.writeln("UC4RB_SV_TEST_FAILCOUNT::=" + failCount);
+            ConsoleWriter.writeln("UC4RB_SV_TEST_ABORTCOUNT::=" + abortCount);
+            ConsoleWriter.writeln("UC4RB_SV_TEST_WARNCOUNT::=" + warningCount);
+            ConsoleWriter.writeln("UC4RB_SV_TEST_ERRORCOUNT::=" + errorCount);
         }
-        if (!this.resultStatus.equals(anotherObj.resultStatus)) {
-            return false;
-        }
-        if (!this.resultPass.equals(anotherObj.resultPass)) {
-            return false;
-        }
-        if (!this.resultFail.equals(anotherObj.resultFail)) {
-            return false;
-        }
-        if (!this.resultAbort.equals(anotherObj.resultAbort)) {
-            return false;
-        }
-        if (!this.resultWarning.equals(anotherObj.resultWarning)) {
-            return false;
-        }
-        if (!this.resultError.equals(anotherObj.resultError)) {
-            return false;
-        }
-        return true;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("TestResult [status=");
-        builder.append(status);
-        builder.append(", resultStatus=");
-        builder.append(resultStatus);
-        builder.append(", resultPass=");
-        builder.append(resultPass);
-        builder.append(", resultFail=");
-        builder.append(resultFail);
-        builder.append(", resultAbort=");
-        builder.append(resultAbort);
-        builder.append(", resultWarning=");
-        builder.append(resultWarning);
-        builder.append(", resultError=");
-        builder.append(resultError);
-        builder.append("]");
+        builder.append("TestResult [status=").append(invokeStatus);
+        builder.append(", resultStatus=").append(resultStatus);
+        builder.append(", resultPass=").append(passCount);
+        builder.append(", resultFail=").append(failCount);
+        builder.append(", resultAbort=").append(abortCount);
+        builder.append(", resultWarning=").append(warningCount);
+        builder.append(", resultError=").append(errorCount).append("]");
         return builder.toString();
     }
 

@@ -12,6 +12,7 @@ import javax.json.JsonWriterFactory;
 import javax.json.stream.JsonGenerator;
 
 import com.automic.casv.constants.Constants;
+import com.sun.jersey.api.client.ClientResponse;
 
 /**
  * Common Utility class contains basic function(s) required by CA SV actions.
@@ -131,8 +132,21 @@ public class CommonUtil {
         return i;
     }
 
+    public static final boolean isHttpStatusOK(int status) {
+        return status >= Constants.HTTP_SUCCESS_START && status <= Constants.HTTP_SUCCESS_END;
+    }
+
+    public static final JsonObject readAndLog(ClientResponse cr) {
+        JsonObject obj = null;
+        if (cr.getLength() > 0) {
+            obj = CommonUtil.jsonObjectResponse(cr.getEntityInputStream());
+            CommonUtil.jsonPrettyPrinting(obj);
+        }
+        return obj;
+    }
+
     /**
-     * Method to beautify the jsonand write on the console
+     * Method to beautify the json
      * 
      * @param jsonObj
      */

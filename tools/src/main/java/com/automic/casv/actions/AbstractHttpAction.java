@@ -7,9 +7,11 @@ import com.automic.casv.config.HttpClientConfig;
 import com.automic.casv.constants.Constants;
 import com.automic.casv.constants.ExceptionConstants;
 import com.automic.casv.exception.AutomicException;
+import com.automic.casv.filter.AuthenticationErrorFilter;
 import com.automic.casv.filter.GenericResponseFilter;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
+import com.automic.casv.validator.CaSvValidator;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
@@ -31,21 +33,21 @@ public abstract class AbstractHttpAction extends AbstractAction {
     protected String username;
 
     /**
-     * Password for the username
-     */
-    private String password;
-
-    /**
      * Option to skip validation
      */
     private boolean skipCertValidation;
 
     private Client client;
 
-    public AbstractHttpAction() {
+    private boolean authRequired;
+
+    public AbstractHttpAction(boolean authRequired) {
+        this.authRequired = authRequired;
         addOption(Constants.BASE_URL, true, "CASV URL");
-        addOption(Constants.USERNAME, false, "Username");
         addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
+        if (authRequired) {
+            addOption(Constants.USERNAME, true, "Username");
+        }
     }
 
     /**
@@ -67,8 +69,10 @@ public abstract class AbstractHttpAction extends AbstractAction {
 
     private void prepareCommonInputs() throws AutomicException {
         String temp = getOptionValue(Constants.BASE_URL);
-        this.username = getOptionValue(Constants.USERNAME);
-        this.password = System.getenv(Constants.PASSWORD);
+        if (authRequired) {
+            this.username = getOptionValue(Constants.USERNAME);
+            CaSvValidator.checkNotEmpty(username, "User");            
+        }
         this.skipCertValidation = CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION));
         try {
             this.baseUrl = new URI(temp);
@@ -95,8 +99,9 @@ public abstract class AbstractHttpAction extends AbstractAction {
     protected WebResource getClient() throws AutomicException {
         if (client == null) {
             client = HttpClientConfig.getClient(baseUrl.getScheme(), this.skipCertValidation);
-            if (CommonUtil.checkNotEmpty(username)) {
-                client.addFilter(new HTTPBasicAuthFilter(username, password));
+            if (authRequired) {
+                client.addFilter(new HTTPBasicAuthFilter(username, System.getenv(Constants.PASSWORD)));
+                client.addFilter(new AuthenticationErrorFilter());
             }
             client.addFilter(new GenericResponseFilter());
         }

@@ -29,6 +29,7 @@ public class StopVSAction extends AbstractHttpAction {
     private String vsName;
 
     public StopVSAction() {
+        super(true);
         addOption("vsename", true, "VSE Name");
         addOption("vsname", true, "Virtual Service Name");
     }
@@ -41,12 +42,16 @@ public class StopVSAction extends AbstractHttpAction {
 
         ConsoleWriter.writeln("Calling url " + webResource.getURI());
 
-        ClientResponse response = webResource.accept(Constants.START_STOP_VS_ACCEPT_TYPE).post(ClientResponse.class);
+        ClientResponse response = webResource.header(Constants.IGNORE_HTTPERROR, "true")
+                .accept(Constants.START_STOP_VS_ACCEPT_TYPE).post(ClientResponse.class);
 
-        // print response on console
-        JsonObject jsonObjectResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-        ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonObjectResponse));
-
+        JsonObject jObj = CommonUtil.readAndLog(response);
+        if (!CommonUtil.isHttpStatusOK(response.getStatus())) {            
+            if (jObj != null) {
+                ConsoleWriter.writeln("UC4RB_SV_RESPMSG::=" + jObj.getString("message"));
+            }
+            throw new AutomicException("Stop VS Operation failed");
+        }
     }
 
     /**
