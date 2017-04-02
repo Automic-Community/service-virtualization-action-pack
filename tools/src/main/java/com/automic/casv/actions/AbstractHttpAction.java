@@ -7,6 +7,7 @@ import com.automic.casv.config.HttpClientConfig;
 import com.automic.casv.constants.Constants;
 import com.automic.casv.constants.ExceptionConstants;
 import com.automic.casv.exception.AutomicException;
+import com.automic.casv.filter.AuthenticationFilter;
 import com.automic.casv.filter.GenericResponseFilter;
 import com.automic.casv.util.CommonUtil;
 import com.automic.casv.util.ConsoleWriter;
@@ -97,6 +98,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
             client = HttpClientConfig.getClient(baseUrl.getScheme(), this.skipCertValidation);
             if (CommonUtil.checkNotEmpty(username)) {
                 client.addFilter(new HTTPBasicAuthFilter(username, password));
+                client.addFilter(new AuthenticationFilter());
             }
             client.addFilter(new GenericResponseFilter());
         }

@@ -38,29 +38,25 @@ public class GenericResponseFilter extends ClientFilter {
 
         // printing response code and message on console
         ConsoleWriter.writeln(msg);
+
         // Redeploy service when package already deployed
         if (ignoreHttpError && response.getStatus() == Constants.HTTP_NOT_FOUND) {
             return response;
         }
-        // print json or xml depending on its content-type
-        MultivaluedMap<String, String> responseHeaders = response.getHeaders();
-        List<String> contentType = responseHeaders.get("Content-Type");
-        List<String> contenLength = responseHeaders.get("Content-Length");
 
-        if (contentType != null) {
-            if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
-                if (contentType.get(0).toLowerCase().contains("json")) {
-                    JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
-                    ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
-                } else if (contentType.get(0).toLowerCase().contains("xml")) {
-                    ConsoleWriter.writeln(response.getEntity(String.class));
-                }
+        if (!(response.getStatus() >= Constants.HTTP_SUCCESS_START && response.getStatus() <= Constants.HTTP_SUCCESS_END)) {
+            // print json or xml depending on its content-type
+            MultivaluedMap<String, String> responseHeaders = response.getHeaders();
+            List<String> contentType = responseHeaders.get("Content-Type");
 
-                String responseMsg = response.getEntity(String.class);
-                throw new AutomicRuntimeException(responseMsg);
+            if (contentType != null && contentType.get(0).toLowerCase().contains("json")) {
+                JsonObject jsonResponse = CommonUtil.jsonObjectResponse(response.getEntityInputStream());
+                ConsoleWriter.writeln(CommonUtil.jsonPrettyPrinting(jsonResponse));
+            } else if (contentType != null && contentType.get(0).toLowerCase().contains("xml")) {
+                ConsoleWriter.writeln(response.getEntity(String.class));
             }
-        } else if (!(contenLength != null && Integer.parseInt(contenLength.get(0)) > 0)) {
-            String responseMsg = "Failed to process the request";
+
+            String responseMsg = response.getEntity(String.class);
             throw new AutomicRuntimeException(responseMsg);
         }
 
