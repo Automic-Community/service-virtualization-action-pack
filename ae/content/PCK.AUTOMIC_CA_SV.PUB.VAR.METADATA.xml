@@ -24,15 +24,15 @@
 </ATTR_VARA>
 <VARA state="1">
 <Variables>
-<row Name="Categories" Value="CA SV Integration" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Categories" Value="CA Service Virtualization Integration" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Company" Value="Automic Software GmbH" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Dependencies" Value="PCK.ITPA_SHARED &gt; 1.1" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Description" Value="Provides integration with CA SV" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Dependencies" Value="PCK.ITPA_SHARED ~&gt; 1.1 , PCK.AUTOMIC_FILESYSTEM ~&gt; 1.1" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Description" Value="Provides integration with CA Service Virtualization" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Homepage" Value="www.automic.com" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="License" Value="Automic License" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Name" Value="PCK.AUTOMIC_CA_SV" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Package Format Version" Value="0.1.0" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Title" Value="Automic CA SV Package" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Title" Value="Automic CA Service Virtualization Package" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Version" Value="1.0.0" Value1="" Value2="" Value3="" Value4=""/>
 </Variables>
 </VARA>

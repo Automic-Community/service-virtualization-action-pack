@@ -41,6 +41,12 @@
 			<artifactId>javax.json</artifactId>
 			<version>1.0.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-multipart</artifactId>
+			<version>1.8</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -118,7 +124,7 @@
 					<serverId>com.automic.nexusvie</serverId>
 					<!-- The Base URL of Nexus instance where we want to stage -->
 					<nexusUrl>https://nexusvie.automic.com/nexus</nexusUrl>
-					<stagingProfileId>b4fa12dc5b191</stagingProfileId>
+					<stagingProfileId>e0a27030b3388</stagingProfileId>
 					<!-- do NOT auto release after close as we need to retrieve CLM base 
 						url as long the staged repo exists -->
 					<!-- explicit release step in build script required (outside of POM) -->

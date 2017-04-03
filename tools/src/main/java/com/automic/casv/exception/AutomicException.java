@@ -6,7 +6,7 @@ package com.automic.casv.exception;
  * Business exception for invalid inputs to Actions
  * </ul>
  * <ul>
- * Technical exception to denote errors while communicating with Puppet API
+ * Technical exception to denote errors.
  * </ul>
  * </li>
  *

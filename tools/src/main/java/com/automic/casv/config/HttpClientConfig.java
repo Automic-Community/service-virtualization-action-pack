@@ -32,6 +32,8 @@ public final class HttpClientConfig {
     public static Client getClient(String protocol, boolean skipSSLValidation) throws AutomicException {
         ClientConfig config = new DefaultClientConfig();
 
+        config.getClasses().add(com.sun.jersey.multipart.impl.MultiPartWriter.class);
+
         int connectionTimeOut = CommonUtil.getEnvParameter(Constants.ENV_CONNECTION_TIMEOUT,
                 Constants.CONNECTION_TIMEOUT);
         ConsoleWriter.writeln("Using Connection timeout as " + connectionTimeOut + " (ms)");
