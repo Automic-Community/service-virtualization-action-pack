@@ -26,8 +26,8 @@ public class RunTestSuiteAction extends AbstractHttpAction {
 
     public RunTestSuiteAction() {
         super(false);
-        addOption("testsuitefile", true, "Test suite file");
-        addOption("config", false, "Configuration file");
+        addOption("testsuitefile", true, "Test Suite Path");
+        addOption("config", false, "Config Path");
         addOption("async", false, "Asynchronous call");
     }
 
@@ -75,8 +75,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
         TestResult testResult = new TestResult(xmlResponse, this.async);
         if (!testResult.isTestSucceeded()) {
             throw new AutomicException("Run Test suite operation failed.");
-        } else {
-            testResult.logInfo();
         }
+        testResult.logInfo();        
     }
 }
