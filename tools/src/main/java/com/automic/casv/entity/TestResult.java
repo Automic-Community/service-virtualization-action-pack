@@ -101,9 +101,8 @@ public class TestResult {
     }
 
     public TestResult(File file) throws AutomicException {
-        try {
-            InputSource source = new InputSource(new FileInputStream(file));
-
+        try (FileInputStream fis = new FileInputStream(file)) {
+            InputSource source = new InputSource(fis);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(source);
@@ -163,11 +162,10 @@ public class TestResult {
 
         TestResult other = (TestResult) obj;
 
-        return ("OK".equalsIgnoreCase(invokeStatus)) && (async == other.async)
-                && (this.invokeStatus.equals(other.getInvokeStatus()))
-                && (resultStatus.equals(other.getResultStatus())) && (passCount == other.getPassCount())
-                && (failCount == other.getFailCount()) && (warningCount == other.getWarningCount())
-                && (errorCount == other.getAbortCount()) && (abortCount == other.getAbortCount());
+        return isTestSucceeded() && other.isTestSucceeded() && (async == other.async)
+                && (passCount == other.getPassCount()) && (failCount == other.getFailCount())
+                && (warningCount == other.getWarningCount()) && (errorCount == other.getAbortCount())
+                && (abortCount == other.getAbortCount());
     }
 
     public String getInvokeStatus() {
