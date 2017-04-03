@@ -340,7 +340,7 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
 
 = Inputs =
-* Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Base API URL		: Specify Service Virtualization Base API URL. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * Test Case Path	: The path to the test case that you want to run. It's relative path to root at SV server. E.g. test/Tests/testui.tst. Specify full path to the file, root property is not set.
 * Staging Doc Path	: The path to the staging doc that you want to use. It's relative path to root at SV server. E.g. test/Tests/ /StagingDocs/Run1User1Cycle.stg. Specify full path to the file, if root property is not set.

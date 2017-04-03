@@ -338,7 +338,7 @@ If you are deploying using MAR URI option, then MAR URI should be accessible fro
 * Action fails if Virtual Service is already deployed.
 
 = Inputs =
-* Base API URL			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api/Dcm
+* Base API URL			: Specify Service Virtualization Base API URL. Eg. http://localhost:1505/api/Dcm
 * Username			: Specify username for authentication.
 * Password			: Specify password for authentication.
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.

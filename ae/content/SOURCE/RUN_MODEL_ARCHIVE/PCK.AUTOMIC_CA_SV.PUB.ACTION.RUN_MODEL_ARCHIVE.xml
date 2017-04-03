@@ -331,7 +331,7 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
 
 = Inputs =
-* Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Base API URL		: Specify Service Virtualization Base API URL. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * MAR or MARI Path	: The path to the MAR or MAR info file that you want to run. It's relative path to root at SV server. E.g. testsuite/test.mar. Specify full path to the file, if root property is not set.
 * Run Asynchronously	: Specify YES if you want to run the test asynchronously.

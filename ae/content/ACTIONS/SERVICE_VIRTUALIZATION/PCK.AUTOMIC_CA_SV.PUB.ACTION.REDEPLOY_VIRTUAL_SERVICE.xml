@@ -336,7 +336,7 @@ If you are redeploying using MAR File option, then MAR file should be available 
 If you are redeploying using MAR URI option, then MAR URI should be accessible from CA SV Server.
 
 = Inputs =
-* Base API URL			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api/Dcm
+* Base API URL			: Specify Service Virtualization Base API URL. Eg. http://localhost:1505/api/Dcm
 * Username			: Specify username for authentication.
 * Password			: Specify password for authentication.
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
