@@ -333,7 +333,7 @@ This action starts Virtual Service. Action succeeds if Virtual Service is alread
 * Provided invalid VSE Name/Virtual Service Name. 
 
 = Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api
+* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api/Dcm
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.

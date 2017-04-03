@@ -10,7 +10,7 @@
 <DOC><![CDATA[About Automic's CA SV Package
 ================================
 CA Service Virtualization Accelerate application delivery, continuously improve quality and reduce time-to-market. With this package we automate the following:
-* Manage Virtual Service. E.g. Start/Stop/Deploy/Delete
+* Manage Virtual Service. E.g. Start/Stop/Deploy/Redeploy/Delete
 * Run Test Case/Test Suite and Model Archive
 * Compare Test Results
 
