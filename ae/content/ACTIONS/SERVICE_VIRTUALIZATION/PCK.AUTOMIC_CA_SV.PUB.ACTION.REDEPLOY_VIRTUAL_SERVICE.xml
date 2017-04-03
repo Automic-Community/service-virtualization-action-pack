@@ -65,7 +65,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTIONs.00>
+<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">MAR File Path</UC4RB_SV_DEPLOYOPTIONs.00>
 <UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
@@ -141,7 +141,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTIONs.00>
+<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">MAR File Path</UC4RB_SV_DEPLOYOPTIONs.00>
 <UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
@@ -203,7 +203,7 @@
 <node content="1" id="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">
-<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">FILE</UC4RB_SV_DEPLOYOPTIONs.00>
+<UC4RB_SV_DEPLOYOPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_DEPLOYOPTION#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">MAR File Path</UC4RB_SV_DEPLOYOPTIONs.00>
 <UC4RB_SV_MARs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_MAR#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE"/>
 <UC4RB_SV_VS_ENVs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SV_VS_ENV#" promptsetname="PCK.AUTOMIC_CA_SV.PRV.PROMPTSET.REDEPLOY_VIRTUAL_SERVICE">VSE</UC4RB_SV_VS_ENVs.00>
 </PRPTBOX>
@@ -336,13 +336,13 @@ If you are redeploying using MAR File option, then MAR file should be available 
 If you are redeploying using MAR URI option, then MAR URI should be accessible from CA SV Server.
 
 = Inputs =
-* API Endpoint			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api/Dcm
+* Base API URL			: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505/api/Dcm
 * Username			: Specify username for authentication.
 * Password			: Specify password for authentication.
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
 * VSE Name			: Provide name of the VS Environment  in which you want to redeploy. Eg. VSE
-* Deploy Option 		: Select the deploy option that you want to use.
-* MAR Location			: Provide MAR File or MAR URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
+* Deploy using	 		: Specify location type of the MAR file.
+* MAR Location			: Provide MAR file Path or URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
 If you specify deploy option as File, MAR location will considered as MAR File.
 If you specify deploy option as URI, MAR location will considered as MAR URI.
 * Sudo Password         	: The password for the sudo command.
@@ -368,7 +368,8 @@ If you specify deploy option as URI, MAR location will considered as MAR URI.
 Logs will be displayed in the AE report.
 
 = Example =
-(none)]]></DOC>
+* MAR Location 	(Deploy option - MAR File Path): "E:\automic\sv\DevTestPortal\MAR\Test.mar"
+		(Deploy option - MAR File URI) : "file:///C:/CASV/Test.mar"]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

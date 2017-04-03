@@ -321,17 +321,17 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
 
 = General description =
-This action runs the test using specified MAR or Mari file. This action also publishes the test result (XML format). Specified MAR/Mari File should be available on CA SV Server. 
+This action runs tests from model archives file (*.mar). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before run the action. File Paths required by this action are relative to the root. This action also publishes the test result (XML format). Specified MAR/Mari File should be available on CA SV Server. 
 If you are running test asynchronously, CallBack Id will also be printed in job report.
 
 * Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
-* * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
+* Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
 
 = Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* MAR or MARI Path	: Provide full file path to the Mar or Mari file. E.g.  C:/MyTests/getrecord.mari
-* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* MAR or MARI Path	: The path to the MAR or MAR info file that you want to run. It's relative path to root at SV server. E.g. testsuite/test.mar. Specify full path to the file, if you have not set the root property.
+* Run Asynchronously	: Specify YES if you want to run the test asynchronously.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

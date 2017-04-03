@@ -324,7 +324,7 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
 
 = General description =
-This action runs the Test Suite. You need to provide atleast the full file path to the Test Suite (.ste  file). You could also provide the Configuration file to be used when executing the test suite.
+This action runs test from suite file (*.ste). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before running the action. File paths required by this action are relative to the root. You could also provide the Configuration file to be used when executing the test suite.
 To run test cases asynchronously mark "Asynchronous call" field YES.
 
 All the specified file input(s) should be available on CA SV Server.
@@ -335,11 +335,11 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 * * Action passes if you are running test asynchronously and response xml have invokeResult.status as OK.
 
 = Inputs =
-* API Endpoint		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
+* Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Test Suite Path	: Provide full file path to the Test suite (.ste) file. E.g.  C:/MyTests/alltests.ste
-* Config Path		: Provide full file path to the config file. E.g. C:/MyTests/alltests.config
-* Asynchronous call	: Specify if invocation should be done asynchronously or not. Default value is NO.
+* Test Suite Path	: The path to the suite that you want to run. It's relative path to root at SV server. E.g. testsuite/Suites/alltests.ste. Specify full path to the file, if you have not set the root property.
+* Config Path		: The path to the config file that you want to use. It's relative path to root at SV server.  E.g. testsuite/Suites/alltests.config. Specify full path to the file, if you have not set the root property.
+* Run Asynchronously	: Specify YES if you want to run the test asynchronously.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
