@@ -98,8 +98,7 @@ public class RunTestAction extends AbstractHttpAction {
         TestResult testResult = new TestResult(xmlResponse, this.async);
         if (!testResult.isTestSucceeded()) {
             throw new AutomicException("Run Test operation failed.");
-        } else {
-            testResult.logInfo();
-        }
+        } 
+        testResult.logInfo();        
     }
 }

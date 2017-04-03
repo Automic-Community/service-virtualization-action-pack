@@ -43,7 +43,7 @@ public class DeployVSAction extends AbstractHttpAction {
     public DeployVSAction() {
         super(true);
         addOption("vsename", true, "VSE Name");
-        addOption("mar", true, "MAR");
+        addOption("mar", true, "MAR Location");
         addOption("deployoption", true, "Deploy Option (File | Uri)");
         addOption("redeploy", false, "Redeploy (True | False)");
     }
@@ -105,7 +105,7 @@ public class DeployVSAction extends AbstractHttpAction {
 
         if ("File".equalsIgnoreCase(deployOption)) {
             marFile = new File(temp);
-            CaSvValidator.checkFileExists(marFile, "MAR File Path");
+            CaSvValidator.checkFileExists(marFile, "MAR Location");
         } else if ("Uri".equalsIgnoreCase(deployOption)) {
             marURI = temp;
         } else {
