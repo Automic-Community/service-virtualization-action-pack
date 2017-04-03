@@ -43,7 +43,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
 
     public AbstractHttpAction(boolean authRequired) {
         this.authRequired = authRequired;
-        addOption(Constants.BASE_URL, true, "CASV URL");
+        addOption(Constants.BASE_URL, true, "Base API URL");
         addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
         if (authRequired) {
             addOption(Constants.USERNAME, true, "Username");
@@ -78,7 +78,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
             this.baseUrl = new URI(temp);
         } catch (URISyntaxException e) {
             ConsoleWriter.writeln(e);
-            String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
+            String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "Base API URL", temp);
             throw new AutomicException(msg);
         }
     }

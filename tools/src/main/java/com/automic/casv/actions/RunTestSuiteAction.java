@@ -28,7 +28,7 @@ public class RunTestSuiteAction extends AbstractHttpAction {
         super(false);
         addOption("testsuitefile", true, "Test Suite Path");
         addOption("config", false, "Config Path");
-        addOption("async", false, "Asynchronous call");
+        addOption("async", false, "Run Asynchronously");
     }
 
     @Override

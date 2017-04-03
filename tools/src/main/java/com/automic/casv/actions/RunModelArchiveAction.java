@@ -23,8 +23,8 @@ public class RunModelArchiveAction extends AbstractHttpAction {
 
     public RunModelArchiveAction() {
         super(false);
-        addOption("marormari", true, "Mar or Mari Path");
-        addOption("async", false, "Asynchronous call");
+        addOption("marormari", true, "MAR or MARI Path");
+        addOption("async", false, "Run Asynchronously");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class RunModelArchiveAction extends AbstractHttpAction {
     private void initAndValidateInputs() throws AutomicException {
         // validate test suite file
         this.marOrMariFile = getOptionValue("marormari");
-        CaSvValidator.checkNotEmpty(this.marOrMariFile, "Mar or Mari Path");
+        CaSvValidator.checkNotEmpty(this.marOrMariFile, "MAR or MARI Path");
 
         // get async option from commandline
         this.async = CommonUtil.convert2Bool(getOptionValue("async"));

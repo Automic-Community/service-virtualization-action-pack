@@ -324,8 +324,7 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_TEST_SUITE
 
 = General description =
-This action runs test from suite file (*.ste). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before running the action. File paths required by this action are relative to the root. You could also provide the Configuration file to be used when executing the test suite.
-To run test cases asynchronously mark "Asynchronous call" field YES.
+This action runs test from suite file (*.ste). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before running the action. File paths required by this action are relative to the root. You could also provide the test configuration file while executing the test suite.
 
 All the specified file input(s) should be available on CA SV Server.
 
@@ -337,8 +336,8 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 = Inputs =
 * Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Test Suite Path	: The path to the suite that you want to run. It's relative path to root at SV server. E.g. testsuite/Suites/alltests.ste. Specify full path to the file, if you have not set the root property.
-* Config Path		: The path to the config file that you want to use. It's relative path to root at SV server.  E.g. testsuite/Suites/alltests.config. Specify full path to the file, if you have not set the root property.
+* Test Suite Path	: The path to the suite that you want to run. It's relative path to root at SV server. E.g. testsuite/Suites/alltests.ste. Specify full path, if root property is not set.
+* Config Path		: The path to the config file that you want to use. It's relative path to root at SV server.  E.g. testsuite/Suites/alltests.config. Specify full path to the file, if root property is not set.
 * Run Asynchronously	: Specify YES if you want to run the test asynchronously.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
@@ -388,12 +387,12 @@ Logs will be displayed in the AE report.
 * To run Test Case synchronously
 Test Suite Path		: C:/MyTests/alltests.ste
 Config Path		: C:/MyTests/getrecord.config
-Asynchronous call	: NO
+Run Asynchronously   	: NO
 
 * To run Test asynchronously
 Test Suite Path		: C:/MyTests/alltests.ste
 Config Path		: C:/MyTests/getrecord.config
-Asynchronous call	: YES]]></DOC>
+Run Asynchronously	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

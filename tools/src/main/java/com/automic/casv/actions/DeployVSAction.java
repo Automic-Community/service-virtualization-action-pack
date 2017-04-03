@@ -44,7 +44,7 @@ public class DeployVSAction extends AbstractHttpAction {
         super(true);
         addOption("vsename", true, "VSE Name");
         addOption("mar", true, "MAR Location");
-        addOption("deployoption", true, "Deploy Option (File | Uri)");
+        addOption("deployoption", true, "Deploy using (File | Uri)");
         addOption("redeploy", false, "Redeploy (True | False)");
     }
 
@@ -101,7 +101,7 @@ public class DeployVSAction extends AbstractHttpAction {
         CaSvValidator.checkNotEmpty(temp, "MAR");
 
         String deployOption = getOptionValue("deployoption");
-        CaSvValidator.checkNotEmpty(deployOption, "Deploy Option (File | Uri)");
+        CaSvValidator.checkNotEmpty(deployOption, "Deploy using (File | Uri)");
 
         if ("File".equalsIgnoreCase(deployOption)) {
             marFile = new File(temp);
@@ -109,7 +109,7 @@ public class DeployVSAction extends AbstractHttpAction {
         } else if ("Uri".equalsIgnoreCase(deployOption)) {
             marURI = temp;
         } else {
-            throw new AutomicException("Invalid Deploy option.");
+            throw new AutomicException("Invalid Deploy using.");
         }
 
         reDeploy = CommonUtil.convert2Bool(getOptionValue("redeploy"));

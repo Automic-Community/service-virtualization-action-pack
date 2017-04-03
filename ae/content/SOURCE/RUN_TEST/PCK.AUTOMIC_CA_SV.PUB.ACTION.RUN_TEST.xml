@@ -334,8 +334,6 @@ This action runs test from test file (*.tst). User should set the root property 
 
 All the specified file input(s) should be available on CA SV Server.
 
-To run test cases asynchronously mark "Asynchronous call" field YES.
-
 If you are running test asynchronously, CallBack Id will also be printed in job report.
 
 * Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
@@ -344,9 +342,9 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 = Inputs =
 * Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Test Case Path	: The path to the test case that you want to run. It's relative path to root at SV server. E.g. test/Tests/testui.tst. Specify full path to the file, if you have not set the root property.
-* Staging Doc Path	: The path to the staging doc that you want to use. It's relative path to root at SV server. E.g. test/Tests/ /StagingDocs/Run1User1Cycle.stg. Specify full path to the file, if you have not set the root property.
-* Config Path		: The path to the config file that you want to use. It's relative path to root at SV server.  E.g. testsuite/Suites/alltests.config. Specify full path to the file, if you have not set the root property.
+* Test Case Path	: The path to the test case that you want to run. It's relative path to root at SV server. E.g. test/Tests/testui.tst. Specify full path to the file, root property is not set.
+* Staging Doc Path	: The path to the staging doc that you want to use. It's relative path to root at SV server. E.g. test/Tests/ /StagingDocs/Run1User1Cycle.stg. Specify full path to the file, if root property is not set.
+* Config Path		: The path to the config file that you want to use. It's relative path to root at SV server.  E.g. testsuite/Suites/alltests.config. Specify full path to the file, if root property is not set.
 * Coordinator server	: Name of Coordinator server. E.g. Coordinator
 * Run Asynchronously	: Specify YES if you want to run the test asynchronously.
 * Sudo Password         : The password for the sudo command.
@@ -400,12 +398,12 @@ Test Case Path		: C:/MyTests/getrecord.tst
 Staging Doc Path	: C:/MyTests/getrecord.stg
 Config Path		: C:/MyTests/getrecord.config
 Coordinator server	: Coordinator
-Asynchronous call	: NO
+Run Asynchronously	: NO
 
 * To run Test asynchronously
 Test Case Path		: C:/MyTests/getrecord.tst
 Coordinator server	: Coordinator
-Asynchronous call	: YES]]></DOC>
+Run Asynchronously	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

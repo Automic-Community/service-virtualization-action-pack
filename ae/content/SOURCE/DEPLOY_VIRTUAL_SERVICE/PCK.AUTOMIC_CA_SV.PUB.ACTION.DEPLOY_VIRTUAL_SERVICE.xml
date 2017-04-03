@@ -344,9 +344,9 @@ If you are deploying using MAR URI option, then MAR URI should be accessible fro
 * Skip SSL Validation		: Skips SSL validation if 'YES' is selected.
 * VSE Name			: Provide name of the VS Environment in which VS is present. Eg. VSE
 * Deploy using	 		: Specify location type of the MAR file.
-* MAR Location			: Provide MAR file Path or URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
-If you specify deploy option as File, MAR location will considered as MAR File.
-If you specify deploy option as URI, MAR location will considered as MAR URI.
+* MAR Location			: Provide MAR file Path or MAR URI which will be used for deployment. E.g. file:///C:/CASV/Test.mar. 
+If you specify deploy using as MAR File Path, MAR location will considered as MAR File.
+If you specify deploy using as MAR URI, MAR location will considered as MAR URI.
 * Sudo Password         	: The password for the sudo command.
 * Options              	 	: Run using sudo password (and sudo username if specified).
 * Sudo Username         	: The username to be used for the sudo command. 	
@@ -370,8 +370,8 @@ If you specify deploy option as URI, MAR location will considered as MAR URI.
 AE logs will be displayed in the AE report.
 
 = Example =
-* MAR Location 	(Deploy option - MAR File Path): "E:\automic\sv\DevTestPortal\MAR\Test.mar"
-		(Deploy option - MAR File URI) : "file:///C:/CASV/Test.mar"]]></DOC>
+* MAR Location 	(Deploy using - MAR File Path): "E:\automic\sv\DevTestPortal\MAR\Test.mar"
+		(Deploy using - MAR URI) : "file:///C:/CASV/Test.mar"]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

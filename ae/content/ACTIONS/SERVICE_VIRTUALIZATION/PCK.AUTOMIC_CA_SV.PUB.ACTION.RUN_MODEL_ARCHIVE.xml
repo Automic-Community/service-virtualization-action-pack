@@ -321,7 +321,10 @@
 PCK.AUTOMIC_CA_SV.PUB.ACTION.RUN_MODEL_ARCHIVE
 
 = General description =
-This action runs tests from model archives file (*.mar). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before run the action. File Paths required by this action are relative to the root. This action also publishes the test result (XML format). Specified MAR/Mari File should be available on CA SV Server. 
+This action runs tests from model archives file (*.mar). User should set the root property lisa.portal.invoke.test.root={{LISA_HOME}} in lisa.properties file before run the action. File Paths required by this action are relative to the root. This action also publishes the test result (XML format). 
+
+Specified MAR/MARI File should be available on CA SV Server. 
+
 If you are running test asynchronously, CallBack Id will also be printed in job report.
 
 * Action passes if you are running test synchronously and response xml have invokeResult.status as OK and invokeResult.result.status as ENDED.
@@ -330,7 +333,7 @@ If you are running test asynchronously, CallBack Id will also be printed in job 
 = Inputs =
 * Base API URL		: Specify Service Virtualization REST API endpoint. Eg. http://localhost:1505
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* MAR or MARI Path	: The path to the MAR or MAR info file that you want to run. It's relative path to root at SV server. E.g. testsuite/test.mar. Specify full path to the file, if you have not set the root property.
+* MAR or MARI Path	: The path to the MAR or MAR info file that you want to run. It's relative path to root at SV server. E.g. testsuite/test.mar. Specify full path to the file, if root property is not set.
 * Run Asynchronously	: Specify YES if you want to run the test asynchronously.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
@@ -378,11 +381,11 @@ Logs will be displayed in the AE report.
 = Example =
 * To run Test Case synchronously
 MAR or MARI Path	: C:/MyTests/getrecord.mari
-Asynchronous call	: NO
+Run Asynchronously	: NO
 
 * To run Test asynchronously
 MAR or MARI Path	: C:/MyTests/getrecord.mari
-Asynchronous call	: YES]]></DOC>
+Run Asynchronously	: YES]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

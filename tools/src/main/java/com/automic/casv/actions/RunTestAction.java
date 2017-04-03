@@ -38,7 +38,7 @@ public class RunTestAction extends AbstractHttpAction {
         addOption("stagingdoc", false, "Staging Doc Path");
         addOption("config", false, "Config Path");
         addOption("coordinator", false, "Coordinator Server");
-        addOption("async", false, "Asynchronous call");
+        addOption("async", false, "Run Asynchronously");
     }
 
     @Override
