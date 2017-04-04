@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+
+<MarInfo>
+<name>jira_get_issue</name>
+<type>TEST</type>
+<projectRoot>Cars v9</projectRoot>
+<optimized>true</optimized>
+<deployInfo>
+    <PrimaryAsset>Tests/jira_get_issue.tst</PrimaryAsset>
+    <Configuration>Configs/jira_get_issue.config</Configuration>
+    <StagingDocument>Tests/StagingDocs/Run1User1Cycle.stg</StagingDocument>
+    <CoordinatorServerName>Coordinator@Default</CoordinatorServerName>
+</deployInfo>
+</MarInfo>
