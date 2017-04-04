@@ -1,0 +1,52 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        run_model_archive
+Test Template     Run Model Archive Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    MAR_or_MARI_Path       RunAsynchronously
+Run Model Archive with providing valid MAR or MARI Path
+                      [Tags]    main_scenarios
+                      OK        ${MAR_or_MARI_Path}    YES
+
+Run Model Archive with providing invalid MAR or MARI Path and Run Asynchronously is Yes
+                      OK        Invalid                YES
+
+Run Model Archive with providing invalid MAR or MARI Path
+                      NOK       Invalid                NO
+
+Assert MAR or MARI Path as Mandatory Field
+                      NOK       ${EMPTY}               NO
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "RUN MODEL ARCHIVE"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Run Model Archive Template
+    [Arguments]    ${OK_NOK}    ${MAR_or_MARI_Path}    ${RunAsynchronously}
+    [Documentation]    This action runs the test using specified MAR or Mari file. This action also publishes the test result (XML format). Specified MAR/Mari File should be available on CA SV Server.
+    ...    -Precondition: To execute valid test, Valid MAR or MARI path should be known to user.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${MAR_or_MARI_Path}: This field specifies full file path to the MAR or MARI file.
+    ...    -${RunAsynchronously}: This field specifies if invocation should be done asynchronously or not.
+    Generate String
+    Init Action    ${_RUN_MODEL_ARCHIVE}
+    Connect To SV Test
+    Run Keyword If    '${MAR_or_MARI_Path}' == 'Invalid'    Action Set    &UC4RB_SV_MAR_MARI_FILE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_MAR_MARI_FILE#    ${MAR_or_MARI_Path}
+    Action Set    &UC4RB_SV_ASYNC#    ${RunAsynchronously}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_SV_TESTRESPONSE#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_SV_TESTRESPONSE#
+
+Teardown
+    Log    *******End Test "RUN MODEL ARCHIVE"*******

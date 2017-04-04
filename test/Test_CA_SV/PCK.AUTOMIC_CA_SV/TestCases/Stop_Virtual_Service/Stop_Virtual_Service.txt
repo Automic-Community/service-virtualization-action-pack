@@ -1,0 +1,58 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        stop_virtual_service
+Test Template     Stop Virtual Service Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    VSEName           VirtualServiceName
+Stop Virtual Service with valid VSE Name & Virtual Service Name
+                      [Tags]    main_scenarios
+                      OK        ${VSE_Name}       ${Virtual_Service_Name}
+
+Assert behavior of action for an already stopped Virtual Service Name
+                      OK        ${VSE_Name}       ${Virtual_Service_Name}
+
+Stop Virtual Service with invalid VSE Name & valid Virtual Service Name
+                      NOK       Invalid           ${Virtual_Service_Name}
+
+Stop Virtual Service with valid VSE Name & invalid Virtual Service Name
+                      NOK       ${VSE_Name}       Invalid
+
+Assert VSE Name as Mandatory Field
+                      NOK       ${EMPTY}          ${Virtual_Service_Name}
+
+Assert Virtual Service Name as Mandatory Field
+                      NOK       ${VSE_Name}       ${EMPTY}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "STOP VIRTUAL SERVICE"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Stop Virtual Service Template
+    [Arguments]    ${OK_NOK}    ${VSEName}    ${VirtualServiceName}
+    [Documentation]    This action stops the specified Virtual Service. If Virtual Service is already stopped then action ends successfully.
+    ...    -Precondition: To execute valid test, Valid VSE Name & Virtual Service Name should be known to user.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${VSEName}: This field specifies name of the VS Environment in which VS is found.
+    ...    -${VirtualServiceName}: This field specifies name of the Virtual Service that you want to stop.
+    Generate String
+    Init Action    ${_STOP_VIRTUAL_SERVICE}
+    Connect To SV
+    Run Keyword If    '${VSEName}' == 'Invalid'    Action Set    &UC4RB_SV_VS_ENV#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_VS_ENV#    ${VSEName}
+    Run Keyword If    '${VirtualServiceName}' == 'Invalid'    Action Set    &UC4RB_SV_VS_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_VS_NAME#    ${VirtualServiceName}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+
+Teardown
+    Log    *******End Test "STOP VIRTUAL MACHINE"*******

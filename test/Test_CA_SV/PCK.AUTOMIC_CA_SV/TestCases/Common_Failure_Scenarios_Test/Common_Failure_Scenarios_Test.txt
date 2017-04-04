@@ -1,0 +1,54 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        common_failure_scenarios_test
+Test Template     Common Failure Scenarios Test Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    APIEndpoint       SkipSSL    TestCasePath         StagingDocPath         ConfigPath        CoordinatorServer        AsynchronousCall
+Assertion with Invalid Server URL
+                      [Tags]    main_scenarios
+                      NOK       Invalid           YES        ${Test_Case_Path}    ${Staging_Doc_Path}    ${Config_Path}    ${Coordinator_Server}    YES
+
+Assert Server URL as mandatory field
+                      NOK       ${EMPTY}          YES        ${Test_Case_Path}    ${Staging_Doc_Path}    ${Config_Path}    ${Coordinator_Server}    YES
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "COMMON FAILURE SCENARIOS"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Common Failure Scenarios Test Template
+    [Arguments]    ${OK_NOK}    ${APIEndpoint}    ${SkipSSL}    ${TestCasePath}    ${StagingDocPath}    ${ConfigPath}
+    ...    ${CoordinatorServer}    ${AsynchronousCall}
+    [Documentation]    This test executes the common failure scenarios for action pack with run test action.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
+    ...    -${APIEndpoint}: This field Specifies Service Virtualization REST API endpoint.
+    ...    -${SkipSSL}: This field specifies YES, if you want to skip SSL Validation.
+    ...    -${TestCasePath}: This field specifies full file path to the Test Case file (.tst). This test case file should exist inside a Project.
+    ...    -${StagingDocPath}: This field specifies full file path to the staging doc.
+    ...    -${ConfigPath}: This field specifies full file path to the config file.
+    ...    -${CoordinatorServer}: This field specifies Name of Coordinator server.
+    ...    -${AsynchronousCall}: This field specifies if invocation should be done asynchronously or not.
+    Generate String
+    Init Action    ${_RUN_TEST}
+    Run Keyword If    '${APIEndpoint}' == 'Invalid'    Action Set    &UC4RB_SV_BASE_URL#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_BASE_URL#    ${APIEndpoint}
+    Action Set    &UC4RB_SV_SSL_VALIDATION#    ${SkipSSL}
+    Action Set    &UC4RB_SV_TEST_FILE#    ${TestCasePath}
+    Action Set    &UC4RB_SV_STAGING_FILE#    ${StagingDocPath}
+    Action Set    &UC4RB_SV_CONFIG_FILE#    ${ConfigPath}
+    Action Set    &UC4RB_SV_COORDINATOR#    ${CoordinatorServer}
+    Action Set    &UC4RB_SV_ASYNC#    ${AsynchronousCall}
+    Action Execute
+    Assert Failure
+
+Teardown
+    Log    *******End Test "COMMON FAILURE SCENARIOS"*******

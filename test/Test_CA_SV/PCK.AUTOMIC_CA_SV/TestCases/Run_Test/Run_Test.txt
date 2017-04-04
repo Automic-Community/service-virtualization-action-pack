@@ -1,0 +1,70 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        run_test
+Test Template     Run Test Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    TestCasePath         StagingDocPath         ConfigPath        CoordinatorServer        RunAsynchronously
+Run Test with providing Valid Test case path,Staging doc path,Config path and Coordinator Server
+                      [Tags]    main_scenarios
+                      OK        ${Test_Case_Path}    ${Staging_Doc_Path}    ${Config_Path}    ${Coordinator_Server}    YES
+
+Run Test with providing Valid Test case path & without providing Staging doc path,Config path and Coordinator Server
+                      OK        ${Test_Case_Path}    ${EMPTY}               ${EMPTY}          ${EMPTY}                 YES
+
+Run Test with providing invalid Test case path
+                      NOK       Invalid              ${Staging_Doc_Path}    ${Config_Path}    ${Coordinator_Server}    NO
+
+Run Test with providing invalid Staging doc path
+                      NOK       ${Test_Case_Path}    Invalid                ${Config_Path}    ${Coordinator_Server}    NO
+
+Run Test with providing invalid Config path
+                      NOK       ${Test_Case_Path}    ${Staging_Doc_Path}    Invalid           ${Coordinator_Server}    NO
+
+Run Test with providing invalid Coordinator Server
+                      NOK       ${Test_Case_Path}    ${Staging_Doc_Path}    ${Config_Path}    Invalid                  NO
+
+Assert Test Case Path as Mandatory Field
+                      NOK       ${EMPTY}             ${Staging_Doc_Path}    ${Config_Path}    ${Coordinator_Server}    NO
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "RUN TEST"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Run Test Template
+    [Arguments]    ${OK_NOK}    ${TestCasePath}    ${StagingDocPath}    ${ConfigPath}    ${CoordinatorServer}    ${RunAsynchronously}
+    [Documentation]    This action runs individual Test Case You need to provide atleast the full file path to the Test Case document(.tst file). Other options that you can provide are staging document, configuration file and coordinator server name.
+    ...    -Precondition: To execute valid test, Valid Test case path should be known to user.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${TestCasePath}: This field specifies full file path to the Test Case file (.tst). This test case file should exist inside a Project.
+    ...    -${StagingDocPath}: This field specifies full file path to the staging doc.
+    ...    -${ConfigPath}: This field specifies full file path to the config file.
+    ...    -${CoordinatorServer}: This field specifies Name of Coordinator server.
+    ...    -${RunAsynchronously}: This field specifies if invocation should be done asynchronously or not.
+    Generate String
+    Init Action    ${_RUN_TEST}
+    Connect To SV Test
+    Run Keyword If    '${TestCasePath}' == 'Invalid'    Action Set    &UC4RB_SV_TEST_FILE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_TEST_FILE#    ${TestCasePath}
+    Run Keyword If    '${StagingDocPath}' == 'Invalid'    Action Set    &UC4RB_SV_STAGING_FILE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_STAGING_FILE#    ${StagingDocPath}
+    Run Keyword If    '${ConfigPath}' == 'Invalid'    Action Set    &UC4RB_SV_CONFIG_FILE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_CONFIG_FILE#    ${ConfigPath}
+    Run Keyword If    '${CoordinatorServer}' == 'Invalid'    Action Set    &UC4RB_SV_COORDINATOR#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_COORDINATOR#    ${CoordinatorServer}
+    Action Set    &UC4RB_SV_ASYNC#    ${RunAsynchronously}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_SV_TESTRESPONSE#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_SV_TESTRESPONSE#
+
+Teardown
+    Log    *******End Test "RUN TEST "*******
