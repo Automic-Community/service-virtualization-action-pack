@@ -42,7 +42,7 @@ Ex. **apm upload -force -u <Name>/<Department> -c <Client-id> -H <Host> -pw <Pas
 
 ###### Package/Action Documentation
 
-Please refer to the link for [package documentation](source/ae/DOCUMENTATION/PCK.AUTOMIC_CA_SV.PUB.DOC.xml)
+Please refer to the link for [package documentation](source/ae/content/DOCUMENTATION/PCK.AUTOMIC_CA_SV.PUB.DOC.xml)
 
 
 ###### Useful References
