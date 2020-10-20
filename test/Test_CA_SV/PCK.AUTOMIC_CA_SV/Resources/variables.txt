@@ -1,0 +1,26 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+#----Virtual Services----------------------------------------------------------------------------------------
+${SV_URL}         http://192.168.44.90:1505/api/Dcm
+${User_name}      admin
+${Password}       admin
+${SkipSSL}        YES
+${VSE_Name}       VSE
+${Virtual_Service_Name}    Test
+${MAR_Location_File}    ${EXECDIR}\\Test.mar
+${MAR_Location_URI}    file:///C:/CASV/JiraRest.mar
+#----Test----------------------------------------------------------------------------------------------------
+${SV_URL_Test}    http://192.168.44.90:1505/
+${SkipSSL}        YES
+${Test_Case_Path}    C:/Program Files/CA/DevTest/Projects/Cars v9/Tests/jira_get_issue.tst
+${Staging_Doc_Path}    C:/Program Files/CA/DevTest//Projects/Cars v9/Tests/StagingDocs/Run1User1Cycle.stg
+${Config_Path}    C:/Program Files/CA/DevTest/Projects/Cars v9/Configs/jira_get_issue.config
+${Coordinator_Server}    Coordinator
+${Test_Suite_Path}    C:/Program Files/CA/DevTest/Projects/Cars v9/Tests/jira_get_issue.ste
+${MAR_or_MARI_Path}    file:///C:/CASV/Test.mar
+${Baseline_XMLString}    <?xml version="1.0" encoding="UTF-8"?><invokeResult><method name="RunTest"><params><param name="testCasePath" value="Projects/Cars v9/Tests/jira_get_issue.tst" /><param name="configPath" value="" /><param name="callbackKey" value="19190C5A185811E78A37005056BD12C1" /><param name="coordName" value="Coordinator" /><param name="stagingDocPath" value="" /></params></method><status>OK</status><result><status>ENDED</status><reportUrl><![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=19A82CDF185811E7BBC9005056BD12C1]]></reportUrl><runId>19A82CDF185811E7BBC9005056BD12C1</runId><pass count="1" /><fail count="0" /><abort count="0" /><warning count="0" /><error count="0" /><message>jira_get_issue,Run1User1Cycle</message></result></invokeResult>
+${Test_XMLString1}    <?xml version="1.0" encoding="UTF-8"?><invokeResult><method name="RunTest"><params><param name="testCasePath" value="Projects/Cars v9/Tests/jira_get_issue.tst" /><param name="configPath" value="" /><param name="callbackKey" value="19190C5A185811E78A37005056BD12C1" /><param name="coordName" value="Coordinator" /><param name="stagingDocPath" value="" /></params></method><status>OK</status><result><status>ENDED</status><reportUrl><![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=19A82CDF185811E7BBC9005056BD12C1]]></reportUrl><runId>19A82CDF185811E7BBC9005056BD12C1</runId><pass count="1" /><fail count="0" /><abort count="0" /><warning count="0" /><error count="0" /><message>jira_get_issue,Run1User1Cycle</message></result></invokeResult>
+${Test_XMLString2}    <?xml version="1.0" encoding="UTF-8"?><invokeResult><method name="RunTest"><params><param name="testCasePath" value="Projects/Cars v9/Tests/jira_get_issue.tst" /><param name="configPath" value="" /><param name="callbackKey" value="19190C5A185811E78A37005056BD12C1" /><param name="coordName" value="Coordinator" /><param name="stagingDocPath" value="" /></params></method><status>OK</status><result><status>ENDED</status><reportUrl><![CDATA[http://vviespartan03:1507/devtest/#/main/testMonitorTests/overview?testRunId=19A82CDF185811E7BBC9005056BD12C1]]></reportUrl><runId>19A82CDF185811E7BBC9005056BD12C1</runId><pass count="1" /><fail count="0" /><abort count="0" /><warning count="1" /><error count="0" /><message>jira_get_issue,Run1User1Cycle</message></result></invokeResult>

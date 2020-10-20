@@ -1,0 +1,66 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        deploy_virtual_service
+Test Template     Deploy Virtual Service Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    VSEName           DeployUsing      MARLocation
+Deploy Virtual Service with valid VSE Name,Deploy options as File and valid MAR Location
+                      [Tags]    main_scenarios
+                      OK        ${VSE_Name}       MAR File Path    ${MAR_Location_File}
+
+Deploy Virtual Service with valid VSE Name,Deploy options as URI and valid MAR Location
+                      OK        ${VSE_Name}       MAR File URI     ${MAR_Location_URI}
+
+Asserting behavior of action while deploying Virtual Service with same name which already exists on VSE
+                      NOK       ${VSE_Name}       MAR File Path    ${MAR_Location_File}
+
+Deploy Virtual Service with Invalid VSE Name,Deploy options as File and valid MAR Location
+                      NOK       Invalid           MAR File Path    ${MAR_Location_File}
+
+Deploy Virtual Service with valid VSE Name,Deploy options as File and invalid MAR File Path
+                      NOK       ${VSE_Name}       MAR File Path    Invalid
+
+Deploy Virtual Service with valid VSE Name,Deploy options as URI and invalid MAR URI
+                      NOK       ${VSE_Name}       MAR File URI     Invalid
+
+Assert VSE Name as Mandatory Field
+                      NOK       ${EMPTY}          MAR File Path    ${MAR_Location_File}
+
+Assert MAR Location as Mandatory Field
+                      NOK       ${VSE_Name}       MAR File Path    ${EMPTY}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "DEPLOY VIRTUAL SERVICE"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Deploy Virtual Service Template
+    [Arguments]    ${OK_NOK}    ${VSEName}    ${DeployUsing}    ${MARLocation}
+    [Documentation]    This action deploys the specified Virtual Service over VS Environment using MAR File Path or MAR URI
+    ...    -Precondition: To execute valid test, Valid VSE Name & MAR loaction should be known to user.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${VSEName}: This field specifies name of the VS Environment in which VS is found.
+    ...    -${DeployUsing}: Select URI, if you want to deploy virtual service using MAR URI.
+    ...    -${MARLocation}: Specify MAR File path or MAR URI for deployment. E.g. C:\Test.mar .
+    Generate String
+    Init Action    ${_DEPLOY_VIRTUAL_SERVICE}
+    Connect To SV
+    Run Keyword If    '${VSEName}' == 'Invalid'    Action Set    &UC4RB_SV_VS_ENV#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_VS_ENV#    ${VSEName}
+    Action Set    &UC4RB_SV_DEPLOYOPTION#    ${DeployUsing}
+    Run Keyword If    '${MARLocation}' == 'Invalid'    Action Set    &UC4RB_SV_MAR#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_SV_MAR#    ${MARLocation}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+
+Teardown
+    Log    *******End Test "DEPLOY VIRTUAL MACHINE"*******
